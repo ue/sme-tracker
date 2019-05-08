@@ -24,12 +24,13 @@
       "error",
       {
         "devDependencies": [
-          "storybook/**/*.{ts,tsx,js}",
+          "storybook/**/*.{js,jsx}",
           "config-overrides.js",
-          "src/setupTests.ts",
-          "src/components/**/*.stories.tsx",
-          "src/styles/**/*.stories.tsx",
-          "src/**/*.test.{ts,tsx}"
+          "src/setupTests.js",
+          "src/components/**/*.stories.jsx",
+          "src/styles/**/*.stories.jsx",
+          "src/**/*.test.{js,jsx}",
+          "__tests__/**/*.{js,jsx}"
         ]
       }
     ],
