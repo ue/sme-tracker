@@ -1,0 +1,42 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:jest/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "react-native/react-native": true
+  },
+  "plugins": ["react", "react-native", "jsx-a11y", "import", "prettier", "jest", "eslint-comments"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": "off",
+    "react/button-has-type": "off",
+    "no-use-before-define": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "storybook/**/*.{ts,tsx,js}",
+          "config-overrides.js",
+          "src/setupTests.ts",
+          "src/components/**/*.stories.tsx",
+          "src/styles/**/*.stories.tsx",
+          "src/**/*.test.{ts,tsx}"
+        ]
+      }
+    ],
+    "react-native/no-unused-styles": "error",
+    "react-native/no-inline-styles": "error",
+    "react-native/no-color-literals": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "prettier/prettier": ["error"]
+  }
+}
