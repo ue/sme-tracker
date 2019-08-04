@@ -20,6 +20,7 @@
     "react/prop-types": "off",
     "react/button-has-type": "off",
     "no-use-before-define": "off",
+    "no-underscore-dangle": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {

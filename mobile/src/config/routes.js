@@ -1,16 +1,19 @@
 import React from 'react';
-import { View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import IconButton from '../components/iconButton/iconButton.view';
 
 import ROUTES from '../constants/routeNames';
 
 import Dashboard from '../screens/dashboard.screen';
+import Exchange from '../screens/exchange/exchange.screen';
+import Activity from '../screens/activity/activity.screen';
 
 export default createBottomTabNavigator(
   {
     [ROUTES.TABBAR.DAILY]: {
-      screen: Dashboard,
+      screen: Activity,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => <Icon name="calendar-text" color={tintColor} size={26} />,
       }),
@@ -21,26 +24,12 @@ export default createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => <Icon name="chart-line" color={tintColor} size={26} />,
       }),
     },
-    /* eslint-disable react-native/no-inline-styles */
-    /* eslint-disable react-native/no-color-literals */
     [ROUTES.TABBAR.ADD_ITEM]: {
-      screen: Dashboard,
+      screen: Exchange,
       navigationOptions: () => ({
-        tabBarIcon: () => (
-          <View
-            style={{
-              backgroundColor: '#4A98F7',
-              borderRadius: 15,
-              padding: 5,
-            }}
-          >
-            <Icon name="plus" color="white" size={25} />
-          </View>
-        ),
+        tabBarIcon: () => <IconButton noButton size={25} iconName="plus" />,
       }),
     },
-    /* eslint-enable react-native/no-inline-styles */
-    /* eslint-enable react-native/no-color-literals */
     [ROUTES.TABBAR.RING]: {
       screen: Dashboard,
       navigationOptions: () => ({
