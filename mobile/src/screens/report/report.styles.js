@@ -55,4 +55,16 @@ export default EStyleSheet.create({
     marginTop: 20,
     fontWeight: 'bold',
   },
+  tabbar: {
+    backgroundColor: 'transparent',
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.2,
+  },
+  tabbarIndicator: {
+    backgroundColor: 'black',
+    height: 0.5,
+  },
+  tabbarLabel: {
+    color: 'black',
+  },
 });

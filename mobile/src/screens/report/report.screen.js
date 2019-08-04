@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
-import ActivityContainer from '../../containers/activity.container';
+import ReportContainer from '../../containers/report.container';
 
-import styles from './acticity.styles';
+import styles from './report.styles';
 
 const LIST_DATA = [
   { name: 'Sac Kesimi', price: '20', icon: '', id: 1 },
@@ -19,7 +20,14 @@ const LIST_DATA = [
 ];
 
 class ActivityScreen extends Component {
-  state = {};
+  state = {
+    index: 0,
+    routes: [
+      { key: 'daily', title: 'Gunluk' },
+      { key: 'monthly', title: 'Aylik' },
+      { key: 'yearly', title: 'Yillik' },
+    ],
+  };
 
   _renderItem = ({ item }) => (
     <View style={styles.listItemView}>
@@ -35,18 +43,28 @@ class ActivityScreen extends Component {
 
   _keyExtractor = item => item.id.toString();
 
+  _dailyReportTab = () => (
+    <FlatList data={LIST_DATA} keyExtractor={this._keyExtractor} renderItem={this._renderItem} />
+  );
+
+  _monthlyReportTab = () => (
+    <FlatList data={LIST_DATA} keyExtractor={this._keyExtractor} renderItem={this._renderItem} />
+  );
+
+  _yearlyReportTab = () => (
+    <FlatList data={LIST_DATA} keyExtractor={this._keyExtractor} renderItem={this._renderItem} />
+  );
+
   render() {
     const data = LIST_DATA.map(item => parseInt(item.price, 10));
     return (
-      <ActivityContainer>
+      <ReportContainer>
         {() => (
           <View style={styles.container}>
             <View style={styles.topView}>
               <View style={styles.informatinView}>
                 <Text style={styles.dailyPriceText}>1.265 ₺</Text>
-                <Text>Gunluk</Text>
-                <Text style={styles.mountlyPriceText}>15.320 ₺</Text>
-                <Text>Aylik</Text>
+                <Text>Aylik Toplam</Text>
               </View>
               <AreaChart
                 style={styles.chart}
@@ -57,15 +75,28 @@ class ActivityScreen extends Component {
               />
             </View>
             <View style={styles.bottomView}>
-              <FlatList
-                data={LIST_DATA}
-                keyExtractor={this._keyExtractor}
-                renderItem={this._renderItem}
+              <TabView
+                navigationState={this.state}
+                renderScene={SceneMap({
+                  daily: this._dailyReportTab,
+                  monthly: this._monthlyReportTab,
+                  yearly: this._yearlyReportTab,
+                })}
+                onIndexChange={index => this.setState({ index })}
+                initialLayout={{ width: Dimensions.get('window').width }}
+                renderTabBar={props => (
+                  <TabBar
+                    {...props}
+                    indicatorStyle={styles.tabbarIndicator}
+                    style={styles.tabbar}
+                    labelStyle={styles.tabbarLabel}
+                  />
+                )}
               />
             </View>
           </View>
         )}
-      </ActivityContainer>
+      </ReportContainer>
     );
   }
 }

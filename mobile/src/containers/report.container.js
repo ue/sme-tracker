@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-class DashboardContainer extends Component {
+class ReportContainer extends Component {
   state = {};
 
   render() {
@@ -10,4 +10,4 @@ class DashboardContainer extends Component {
   }
 }
 
-export default DashboardContainer;
+export default ReportContainer;
