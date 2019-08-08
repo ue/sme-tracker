@@ -11,12 +11,12 @@ import styles from './report.styles';
 
 const LIST_DATA = [
   { name: 'Sac Kesimi', price: '20', icon: '', id: 1 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 2 },
+  { name: 'Sac Kesimi', price: '50', icon: '', id: 2 },
   { name: 'Sac Kesimi', price: '30', icon: '', id: 3 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 4 },
+  { name: 'Sac Kesimi', price: '20', icon: '', id: 4 },
   { name: 'Sac Kesimi', price: '20', icon: '', id: 5 },
   { name: 'Sac Kesimi', price: '10', icon: '', id: 6 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 7 },
+  { name: 'Sac Kesimi', price: '30', icon: '', id: 7 },
 ];
 
 class ActivityScreen extends Component {

@@ -1,16 +1,21 @@
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation';
+import {
+  createBottomTabNavigator,
+  createAppContainer,
+  createSwitchNavigator,
+} from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import IconButton from '../components/iconButton/iconButton.view';
 
 import ROUTES from '../constants/routeNames';
 
+import IconButton from '../components/iconButton/iconButton.view';
 import Exchange from '../screens/exchange/exchange.screen';
 import Activity from '../screens/activity/activity.screen';
 import Report from '../screens/report/report.screen';
+import Splash from '../screens/splash/splash.screen';
+import Login from '../screens/login/login.screen';
 
-export default createBottomTabNavigator(
+const Auth = createBottomTabNavigator(
   {
     [ROUTES.TABBAR.DAILY]: {
       screen: Activity,
@@ -39,3 +44,16 @@ export default createBottomTabNavigator(
     },
   },
 );
+
+const RootNavigator = createSwitchNavigator(
+  {
+    [ROUTES.NAVIGATOR.AUTH]: Auth,
+    [ROUTES.SCREENS.SPLASH]: Splash,
+    [ROUTES.NAVIGATOR.NO_AUTH]: Login,
+  },
+  {
+    initialRouteName: ROUTES.SCREENS.SPLASH,
+  },
+);
+
+export default createAppContainer(RootNavigator);

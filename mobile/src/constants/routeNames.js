@@ -1,10 +1,15 @@
+const NAVIGATOR_SUFFIX = 'Navigator';
 const SCREEN_SUFFIX = 'Screen';
-// const DRAWER_SUFFIX = 'Drawer';
 const TABBAR_SUFFIX = 'Tabbar';
-// const MODAL_SUFFIX = 'Modal';
 
 export default {
-  SCREENS: {},
+  NAVIGATOR: {
+    AUTH: `Auth${NAVIGATOR_SUFFIX}`,
+    NO_AUTH: `NoAuth${NAVIGATOR_SUFFIX}`,
+  },
+  SCREENS: {
+    SPLASH: `Splash${SCREEN_SUFFIX}`,
+  },
   TABBAR: {
     DAILY: `Daily${TABBAR_SUFFIX}`,
     SUMMARY: `Summary${TABBAR_SUFFIX}`,
