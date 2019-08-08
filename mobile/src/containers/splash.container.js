@@ -10,7 +10,7 @@ class SplashContainer extends Component {
     const { navigation } = this.props;
 
     setTimeout(() => {
-      navigation.navigate(ROUTES.NAVIGATOR.AUTH);
+      navigation.navigate(ROUTES.NAVIGATOR.NO_AUTH);
     }, 1000);
   }
 

@@ -6,4 +6,15 @@ export default EStyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  errorText: {
+    letterSpacing: 0.7,
+    width: '$deviceWidth / 1.4',
+    fontSize: 10,
+    padding: 5,
+    height: 50,
+    flex: 1,
+    color: '#ff1954',
+    paddingTop: 10,
+    textAlign: 'center',
+  },
 });
