@@ -14,6 +14,7 @@ import Activity from '../screens/activity/activity.screen';
 import Report from '../screens/report/report.screen';
 import Splash from '../screens/splash/splash.screen';
 import Login from '../screens/login/login.screen';
+import Profile from '../screens/profile/profile.screen';
 
 const Auth = createBottomTabNavigator(
   {
@@ -33,6 +34,12 @@ const Auth = createBottomTabNavigator(
       screen: Report,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => <Icon name="chart-line" color={tintColor} size={26} />,
+      }),
+    },
+    [ROUTES.TABBAR.PROFILE]: {
+      screen: Profile,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => <Icon name="account" color={tintColor} size={26} />,
       }),
     },
   },
