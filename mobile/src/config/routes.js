@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-  createBottomTabNavigator,
-  createAppContainer,
-  createSwitchNavigator,
-} from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import ROUTES from '../constants/routeNames';
@@ -21,7 +18,9 @@ const Auth = createBottomTabNavigator(
     [ROUTES.TABBAR.DAILY]: {
       screen: Activity,
       navigationOptions: () => ({
-        tabBarIcon: ({ tintColor }) => <Icon name="calendar-text" color={tintColor} size={26} />,
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="calendar-text" color={tintColor} size={26} />
+        ),
       }),
     },
     [ROUTES.TABBAR.ADD_ITEM]: {
@@ -33,13 +32,17 @@ const Auth = createBottomTabNavigator(
     [ROUTES.TABBAR.SUMMARY]: {
       screen: Report,
       navigationOptions: () => ({
-        tabBarIcon: ({ tintColor }) => <Icon name="chart-line" color={tintColor} size={26} />,
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="chart-line" color={tintColor} size={26} />
+        ),
       }),
     },
     [ROUTES.TABBAR.PROFILE]: {
       screen: Profile,
       navigationOptions: () => ({
-        tabBarIcon: ({ tintColor }) => <Icon name="account" color={tintColor} size={26} />,
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="account" color={tintColor} size={26} />
+        ),
       }),
     },
   },
