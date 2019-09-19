@@ -1,24 +1,18 @@
-import { Component } from 'react';
-import { withNavigation } from 'react-navigation';
+import { useContext, useEffect } from 'react';
+import { NavigationContext } from 'react-navigation';
 
 import ROUTES from '../constants/routeNames';
 
-class SplashContainer extends Component {
-  state = {};
+const SplashContainer = ({ children }) => {
+  const navigation = useContext(NavigationContext);
 
-  componentDidMount() {
-    const { navigation } = this.props;
-
+  useEffect(() => {
     setTimeout(() => {
       navigation.navigate(ROUTES.NAVIGATOR.AUTH);
     }, 1000);
-  }
+  });
 
-  render() {
-    const { children } = this.props;
+  return children && children();
+};
 
-    return children && children();
-  }
-}
-
-export default withNavigation(SplashContainer);
+export default SplashContainer;
