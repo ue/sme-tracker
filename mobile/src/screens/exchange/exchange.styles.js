@@ -1,6 +1,8 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
+import { StyleSheet, Dimensions } from 'react-native';
 
-export default EStyleSheet.create({
+const deviceWidth = Dimensions.get('window').width;
+
+export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -28,6 +30,6 @@ export default EStyleSheet.create({
     width: '50%',
   },
   picker: {
-    width: '$deviceWidth / 2',
+    width: deviceWidth / 2,
   },
 });

@@ -1,10 +1,12 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
+import { StyleSheet, Dimensions } from 'react-native';
 
-export default EStyleSheet.create({
+const deviceHeight = Dimensions.get('window').height;
+
+export default StyleSheet.create({
   form: {
     alignItems: 'center',
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: '$deviceHeight / 11',
+    paddingTop: deviceHeight / 11,
   },
 });

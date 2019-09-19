@@ -1,6 +1,8 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
+import { StyleSheet, Dimensions } from 'react-native';
 
-export default EStyleSheet.create({
+const deviceWidth = Dimensions.get('window').width;
+
+export default StyleSheet.create({
   inputText: {
     alignSelf: 'flex-start',
     letterSpacing: 0.7,
@@ -31,7 +33,7 @@ export default EStyleSheet.create({
     zIndex: 999,
   },
   formInput: {
-    width: '$deviceWidth / 1.4',
+    width: deviceWidth / 1.4,
     marginTop: 10,
   },
 });

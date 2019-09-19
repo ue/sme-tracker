@@ -1,6 +1,9 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
+import { StyleSheet, Dimensions } from 'react-native';
 
-export default EStyleSheet.create({
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
+
+export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -41,8 +44,8 @@ export default EStyleSheet.create({
     marginRight: 20,
   },
   chart: {
-    height: '$deviceHeight / 10',
-    width: '$deviceWidth',
+    height: deviceHeight / 10,
+    width: deviceWidth,
     alignSelf: 'flex-end',
   },
   dailyPriceText: {

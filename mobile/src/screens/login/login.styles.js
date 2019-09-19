@@ -1,6 +1,8 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
+import { StyleSheet, Dimensions } from 'react-native';
 
-export default EStyleSheet.create({
+const deviceWidth = Dimensions.get('window').width;
+
+export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -8,7 +10,7 @@ export default EStyleSheet.create({
   },
   errorText: {
     letterSpacing: 0.7,
-    width: '$deviceWidth / 1.4',
+    width: deviceWidth / 1.4,
     fontSize: 10,
     padding: 5,
     height: 50,

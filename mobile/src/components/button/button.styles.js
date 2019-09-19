@@ -1,6 +1,6 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
+import { StyleSheet } from 'react-native';
 
-export default EStyleSheet.create({
+export default StyleSheet.create({
   buttonText: {
     letterSpacing: 0.7,
     fontSize: 20,
