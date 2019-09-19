@@ -5,17 +5,15 @@ import { createAppContainer } from 'react-navigation';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import store from './redux/store';
-import Routes from './config/routes';
+import App from './config/routes';
 
 EStyleSheet.build({
   $deviceHeight: Dimensions.get('window').height,
   $deviceWidth: Dimensions.get('window').width,
 });
 
-const ReduxNavigation = createAppContainer(Routes);
-
 export default () => (
   <Provider store={store}>
-    <ReduxNavigation />
+    <App />
   </Provider>
 );
