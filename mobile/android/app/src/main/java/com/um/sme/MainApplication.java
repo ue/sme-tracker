@@ -1,4 +1,4 @@
-package com.blockstack;
+package com.um.sme;
 
 import android.app.Application;
 import android.content.Context;

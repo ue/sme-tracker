@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>370862023968-k7d2eug98l4210bq9f6qa1fev5kjji0r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.370862023968-k7d2eug98l4210bq9f6qa1fev5kjji0r</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>370862023968-kpvkj4ff70lcgml9t7sdvut5st0jpjam.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAoVzT-KLimFIM-PQSTjM3iAtpr8FDucxU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>370862023968</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.um.sme</string>
+	<key>PROJECT_ID</key>
+	<string>sme-tracker-624c1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sme-tracker-624c1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:370862023968:ios:4958dd9c3ada0a15c8e345</string>
+	<key>DATABASE_URL</key>
+	<string>https://sme-tracker-624c1.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "370862023968",
+    "firebase_url": "https://sme-tracker-624c1.firebaseio.com",
+    "project_id": "sme-tracker-624c1",
+    "storage_bucket": "sme-tracker-624c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370862023968:android:957aa07690459b0cc8e345",
+        "android_client_info": {
+          "package_name": "com.um.sme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370862023968-kpvkj4ff70lcgml9t7sdvut5st0jpjam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.um.sme",
+            "certificate_hash": "8f7ec4274a00a12b6edf5d446964df50122f3e97"
+          }
+        },
+        {
+          "client_id": "370862023968-2cpea35ukub34jt2j1vpqaid6omr3oqq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIZAGrba7usTsAIuHVVTq-8_wWHb4uBpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370862023968-2cpea35ukub34jt2j1vpqaid6omr3oqq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

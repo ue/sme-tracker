@@ -22,7 +22,7 @@ class LoginScreen extends Component {
   };
 
   // Component liftcycle function
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errorMessage) {
       this.setState({
         isLoading: false,

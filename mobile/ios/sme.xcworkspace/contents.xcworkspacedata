@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:blockstack.xcodeproj">
+      location = "group:/Users/mistik/Desktop/projects/sme-tracker/mobile/ios/sme.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:sme.xcodeproj">
    </FileRef>
 </Workspace>

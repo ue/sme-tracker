@@ -8,7 +8,7 @@ const SplashContainer = ({ children }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate(ROUTES.NAVIGATOR.AUTH);
+      navigation.navigate(ROUTES.NAVIGATOR.NO_AUTH);
     }, 1000);
   });
 

@@ -15,7 +15,7 @@ import styles from './button.styles';
  */
 
 class ButtonView extends Component {
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { isLoading } = this.props;
     if (nextProps.isLoading !== isLoading && nextProps.isLoading) {
       Keyboard.dismiss();
