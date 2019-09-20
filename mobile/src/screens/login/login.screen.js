@@ -68,10 +68,17 @@ class LoginScreen extends Component {
   };
 
   render() {
-    const { isLoading, errorText, emailInput, passwordInput } = this.state;
+    const {
+      isLoading,
+      errorText,
+      emailInput,
+      passwordInput,
+      email,
+      password,
+    } = this.state;
     return (
       <LoginContainer>
-        {() => (
+        {({ login }) => (
           <View style={styles.container}>
             <Form onSubmitButtonPress={() => this._handleOnButtonPress()}>
               <Text>LOGIN</Text>
@@ -99,7 +106,7 @@ class LoginScreen extends Component {
               <Text style={styles.errorText}>{errorText}</Text>
               <Button
                 disabled={isLoading || !(emailInput && passwordInput)}
-                onPress={() => this._handleOnButtonPress()}
+                onPress={() => login({ email, password })}
                 text="Giris"
                 isLoading={isLoading}
               />

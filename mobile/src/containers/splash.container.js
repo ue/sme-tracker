@@ -1,15 +1,26 @@
-import { useContext, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import auth from '@react-native-firebase/auth';
 import { NavigationContext } from 'react-navigation';
+import { useDispatch } from 'react-redux';
+
+import { addUserData } from '../redux/actions/user.action';
 
 import ROUTES from '../constants/routeNames';
 
 const SplashContainer = ({ children }) => {
   const navigation = useContext(NavigationContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate(ROUTES.NAVIGATOR.NO_AUTH);
-    }, 1000);
+    const unsubscribe = auth().onAuthStateChanged(currentUser => {
+      if (currentUser) {
+        dispatch(addUserData(currentUser));
+        navigation.navigate(ROUTES.NAVIGATOR.AUTH);
+      } else {
+        navigation.navigate(ROUTES.NAVIGATOR.NO_AUTH);
+      }
+    });
+    return () => unsubscribe();
   });
 
   return children && children();

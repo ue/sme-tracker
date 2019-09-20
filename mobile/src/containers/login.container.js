@@ -1,13 +1,14 @@
-import { Component } from 'react';
+import { useDispatch } from 'react-redux';
 
-class SplashContainer extends Component {
-  state = {};
+import { loginWithEmail } from '../redux/actions/user.action';
 
-  render() {
-    const { children } = this.props;
+const SplashContainer = ({ children }) => {
+  const dispatch = useDispatch();
 
-    return children && children();
-  }
-}
+  const login = ({ email, password }) => {
+    dispatch(loginWithEmail({ email, password }));
+  };
+  return children && children({ login });
+};
 
 export default SplashContainer;
