@@ -24,7 +24,7 @@ export const registerWithEmail = ({ email, password }) => async dispatch => {
   try {
     const user = await auth().createUserWithEmailAndPassword(email, password);
     dispatch(addUserData(user));
-    // NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
+    NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
   } catch (e) {
     dispatch(failUserRequest(e.message));
   }
@@ -36,7 +36,7 @@ export const loginWithEmail = ({ email, password }) => async dispatch => {
   try {
     const user = await auth().signInWithEmailAndPassword(email, password);
     dispatch(addUserData(user));
-    // NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
+    NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
   } catch (e) {
     dispatch(failUserRequest(e.message));
   }
@@ -48,7 +48,7 @@ export const logout = () => async dispatch => {
   try {
     await auth().signOut();
     dispatch({ type: USER_LOGOUT });
-    // NavigationService.navigate(ROUTES.NAVIGATOR.NO_AUTH);
+    NavigationService.navigate(ROUTES.NAVIGATOR.NO_AUTH);
   } catch (e) {
     dispatch(failUserRequest(e.message));
   }
