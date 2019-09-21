@@ -969,6 +969,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-0.5.2.tgz#db3dfa7ca10673382b5a9d2ead00b4d44061c025"
   integrity sha512-6C8bENuN3XmAaQFiEor71lsb9Zv28bEgQ259BO+MYVNPtgtpFESLZ0RdhL8rh49lg8Ha2dO+TgbJV/S13sBOzQ==
 
+"@react-native-firebase/firestore@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-0.5.2.tgz#ed9ea28e256c42c44c3c6df1df92037a70752d64"
+  integrity sha512-3VJsjMtmsDGygEnNlMKgPoZE2nj4wkQ32jALjxEbZyH7wfVSaNTajfrTCkDcTjEqnLZ+6Iri4rTvRIXR+iZh4g==
+
 "@react-navigation/core@^3.5.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.0.tgz#73d1a12448e2bd71855e0080b95a7f51ede0cd9e"
@@ -6261,6 +6266,11 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
+
+rn-placeholder@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/rn-placeholder/-/rn-placeholder-3.0.0.tgz#d51063cfc20cf702547205b936d934e92c4941b0"
+  integrity sha512-ydlIDoth4uvj9PPEOZLZxgNtNJlmUR49IGFtRKM7FWcKuMG2hC89kIPa8xRCO5vfxSDPwMGTyshYGGsQXOJJNA==
 
 rsvp@^4.8.4:
   version "4.8.5"

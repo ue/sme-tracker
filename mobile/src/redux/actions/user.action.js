@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {
   ADD_USER,
   USER_REQUEST,
@@ -8,10 +9,23 @@ import {
 import ROUTES from '../../constants/routeNames';
 import NavigationService from '../../services/navigationService';
 
-export const addUserData = user => ({
-  type: ADD_USER,
-  data: user,
-});
+export const addUserData = user => async dispatch => {
+  dispatch({ type: USER_REQUEST });
+
+  try {
+    const documentSnapshot = await firestore()
+      .collection('users')
+      .doc(user.uid)
+      .get();
+
+    dispatch({
+      type: ADD_USER,
+      data: { ...user.toJSON(), ...documentSnapshot.data() },
+    });
+  } catch (e) {
+    dispatch(failUserRequest(e.message));
+  }
+};
 
 export const failUserRequest = error => ({
   type: USER_REQUEST_FAIL,
