@@ -3,7 +3,10 @@ import {
   ADD_USER,
   USER_REQUEST,
   USER_REQUEST_FAIL,
+  USER_LOGOUT,
 } from '../../constants/actionTypes';
+import ROUTES from '../../constants/routeNames';
+import NavigationService from '../../services/navigationService';
 
 export const addUserData = user => ({
   type: ADD_USER,
@@ -15,12 +18,37 @@ export const failUserRequest = error => ({
   error,
 });
 
-export const loginWithEmail = ({ email, password }) => async dispatch => {
+export const registerWithEmail = ({ email, password }) => async dispatch => {
   dispatch({ type: USER_REQUEST });
 
   try {
     const user = await auth().createUserWithEmailAndPassword(email, password);
     dispatch(addUserData(user));
+    // NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
+  } catch (e) {
+    dispatch(failUserRequest(e.message));
+  }
+};
+
+export const loginWithEmail = ({ email, password }) => async dispatch => {
+  dispatch({ type: USER_REQUEST });
+
+  try {
+    const user = await auth().signInWithEmailAndPassword(email, password);
+    dispatch(addUserData(user));
+    // NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
+  } catch (e) {
+    dispatch(failUserRequest(e.message));
+  }
+};
+
+export const logout = () => async dispatch => {
+  dispatch({ type: USER_REQUEST });
+
+  try {
+    await auth().signOut();
+    dispatch({ type: USER_LOGOUT });
+    // NavigationService.navigate(ROUTES.NAVIGATOR.NO_AUTH);
   } catch (e) {
     dispatch(failUserRequest(e.message));
   }
