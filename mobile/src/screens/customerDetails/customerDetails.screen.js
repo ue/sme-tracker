@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withNavigation } from 'react-navigation';
 import {
   View,
   Image,
@@ -7,7 +6,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  SafeAreaView,
+  SafeAreaView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconButton from '../../components/iconButton/iconButton.view';
@@ -61,7 +60,7 @@ class CustomersScreen extends Component {
   _keyExtractor = item => item.id.toString();
 
   render() {
-    const { navigation } = this.props;
+    const data = CUSTOMER_DATA.map(item => parseInt(item.price, 10));
 
     return (
       <SafeAreaView style={styles.container}>
@@ -75,11 +74,7 @@ class CustomersScreen extends Component {
 
         <TouchableOpacity style={styles.addCustomerWrapper}>
           <IconButton
-            onPress={() =>
-              navigation.navigate({
-                routeName: 'SplashScreen',
-              })
-            }
+            onPress={() => {}}
             size={32}
             borderRadius={20}
             iconName="plus"
@@ -100,4 +95,4 @@ class CustomersScreen extends Component {
   }
 }
 
-export default withNavigation(CustomersScreen);
+export default CustomersScreen;
