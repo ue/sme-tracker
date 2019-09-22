@@ -12,6 +12,7 @@ import Report from '../screens/report/report.screen';
 import Splash from '../screens/splash/splash.screen';
 import Login from '../screens/login/login.screen';
 import Profile from '../screens/profile/profile.screen';
+import Customer from '../screens/customers/customers.screen'
 
 const Auth = createBottomTabNavigator(
   {
@@ -21,6 +22,12 @@ const Auth = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <Icon name="calendar-text" color={tintColor} size={26} />
         ),
+      }),
+    },
+    [ROUTES.TABBAR.CUSTOMERS]: {
+      screen: Customer,
+      navigationOptions: () => ({
+        tabBarIcon: () =>  <Icon name="people" color={tintColor} size={26} />,
       }),
     },
     [ROUTES.TABBAR.ADD_ITEM]: {

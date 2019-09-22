@@ -3,6 +3,12 @@ import { View, FlatList, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
+import {
+  Placeholder,
+  PlaceholderMedia,
+  PlaceholderLine,
+  Fade,
+} from 'rn-placeholder';
 
 import ActivityContainer from '../../containers/activity.container';
 
@@ -23,13 +29,10 @@ class ActivityScreen extends Component {
 
   _renderItem = ({ item }) => (
     <View style={styles.listItemView}>
-      <View style={styles.listItemLeft}>
-        <Icon style={styles.icon} name="content-cut" size={35} />
-        <Text>{item.name}</Text>
-      </View>
-      <View>
-        <Text>{item.price}</Text>
-      </View>
+      <Placeholder Animation={Fade} Left={PlaceholderMedia}>
+        <PlaceholderLine />
+        <PlaceholderLine width={30} />
+      </Placeholder>
     </View>
   );
 

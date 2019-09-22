@@ -14,6 +14,7 @@ export default {
     DAILY: `Daily${TABBAR_SUFFIX}`,
     SUMMARY: `Summary${TABBAR_SUFFIX}`,
     ADD_ITEM: `AddItem${TABBAR_SUFFIX}`,
+    CUSTOMERS: `AddItem${TABBAR_SUFFIX}`,
     RING: `Ring${TABBAR_SUFFIX}`,
     ACCOUNT: `Account${TABBAR_SUFFIX}`,
   },
