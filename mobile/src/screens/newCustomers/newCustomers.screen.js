@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withNavigation } from 'react-navigation';
 import {
   View,
   Image,
@@ -13,7 +14,8 @@ import IconButton from '../../components/iconButton/iconButton.view';
 
 import ActivityContainer from '../../containers/activity.container';
 
-import styles from './customers.styles';
+import styles from './newCustomers.styles';
+import navigationService from '../../services/navigationService';
 
 const CUSTOMER_DATA = [
   {
@@ -60,31 +62,21 @@ class CustomersScreen extends Component {
   _keyExtractor = item => item.id.toString();
 
   render() {
-    const data = CUSTOMER_DATA.map(item => parseInt(item.price, 10));
+    const { navigation } = this.props;
 
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.searchWrapper}>
-          <TextInput
-            placeholder="Ara..."
-            onChangeText={value => this.setState({ price: value })}
-            style={styles.searchInput}
-          />
-        </View>
 
-        <TouchableOpacity style={styles.addCustomerWrapper}>
           <IconButton
-            onPress={() => {}}
+            onPress={() => navigation.goBack()}
             size={32}
             borderRadius={20}
-            iconName="plus"
+            iconName="arrow-left"
             color="#4A98F7"
             backgroundColor="white"
           />
-          <Text style={styles.buttonTitle}>Yeni müşteri ekle</Text>
-        </TouchableOpacity>
 
-        <Text style={styles.quickTitle}>Müşteriler</Text>
+        <Text style={styles.quickTitle}>yeni musteri</Text>
         <FlatList
           data={CUSTOMER_DATA}
           keyExtractor={this._keyExtractor}
@@ -95,4 +87,4 @@ class CustomersScreen extends Component {
   }
 }
 
-export default CustomersScreen;
+export default withNavigation(CustomersScreen);

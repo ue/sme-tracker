@@ -13,7 +13,7 @@ import IconButton from '../../components/iconButton/iconButton.view';
 
 import ActivityContainer from '../../containers/activity.container';
 
-import styles from './customers.styles';
+import styles from './customerDetails.styles';
 
 const CUSTOMER_DATA = [
   {
@@ -72,19 +72,8 @@ class CustomersScreen extends Component {
           />
         </View>
 
-        <TouchableOpacity style={styles.addCustomerWrapper}>
-          <IconButton
-            onPress={() => {}}
-            size={32}
-            borderRadius={20}
-            iconName="plus"
-            color="#4A98F7"
-            backgroundColor="white"
-          />
-          <Text style={styles.buttonTitle}>Yeni müşteri ekle</Text>
-        </TouchableOpacity>
 
-        <Text style={styles.quickTitle}>Müşteriler</Text>
+        <Text style={styles.quickTitle}>Musteri detay</Text>
         <FlatList
           data={CUSTOMER_DATA}
           keyExtractor={this._keyExtractor}

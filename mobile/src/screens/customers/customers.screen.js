@@ -12,6 +12,8 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconButton from '../../components/iconButton/iconButton.view';
 
+import ROUTES from '../../constants/routeNames';
+
 import ActivityContainer from '../../containers/activity.container';
 
 import styles from './customers.styles';
@@ -77,7 +79,7 @@ class CustomersScreen extends Component {
           <IconButton
             onPress={() =>
               navigation.navigate({
-                routeName: 'SplashScreen',
+                routeName: ROUTES.SCREENS.NEW_CUSTOMER,
               })
             }
             size={32}

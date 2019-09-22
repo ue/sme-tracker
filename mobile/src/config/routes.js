@@ -13,6 +13,8 @@ import Splash from '../screens/splash/splash.screen';
 import Login from '../screens/login/login.screen';
 import Profile from '../screens/profile/profile.screen';
 import Customer from '../screens/customers/customers.screen';
+import CustomerDetails from '../screens/customerDetails/customerDetails.screen';
+import NewCustomer from '../screens/newCustomers/newCustomers.screen';
 
 const Auth = createBottomTabNavigator(
   {
@@ -72,11 +74,24 @@ const stackNavigation = createStackNavigator(
         header: () => null,
       },
     },
+    [ROUTES.SCREENS.NEW_CUSTOMER]: {
+      screen: NewCustomer,
+      navigationOptions: {
+        header: () => null,
+      },
+    },
+    [ROUTES.SCREENS.CUSTOMER_DETAILS]: {
+      screen: CustomerDetails,
+      navigationOptions: {
+        header: () => null,
+      },
+    },
   },
   {
     headerMode: 'none',
   },
 );
+
 const RootNavigator = createSwitchNavigator(
   {
     stackNavigation,
