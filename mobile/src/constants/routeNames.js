@@ -4,7 +4,7 @@ const TABBAR_SUFFIX = 'Tabbar';
 
 export default {
   NAVIGATOR: {
-    AUTH: `Auth${NAVIGATOR_SUFFIX}`,
+    HOME: `Home${NAVIGATOR_SUFFIX}`,
     NO_AUTH: `NoAuth${NAVIGATOR_SUFFIX}`,
   },
   SCREENS: {
@@ -16,8 +16,9 @@ export default {
     DAILY: `Daily${TABBAR_SUFFIX}`,
     SUMMARY: `Summary${TABBAR_SUFFIX}`,
     ADD_ITEM: `AddItem${TABBAR_SUFFIX}`,
-    CUSTOMERS: `AddItem${TABBAR_SUFFIX}`,
+    CUSTOMERS: `Customers${TABBAR_SUFFIX}`,
     RING: `Ring${TABBAR_SUFFIX}`,
     ACCOUNT: `Account${TABBAR_SUFFIX}`,
+    PROFILE: `Profile${TABBAR_SUFFIX}`,
   },
 };

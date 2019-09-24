@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
 import {
   View,
-  Image,
   FlatList,
   Text,
-  TextInput,
   TouchableOpacity,
   SafeAreaView
 } from 'react-native';
@@ -13,7 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconButton from '../../components/iconButton/iconButton.view';
 
 import ActivityContainer from '../../containers/activity.container';
-
+import ROUTES from '../../constants/routeNames';
 import styles from './newCustomers.styles';
 import navigationService from '../../services/navigationService';
 
@@ -68,7 +66,7 @@ class CustomersScreen extends Component {
       <SafeAreaView style={styles.container}>
 
           <IconButton
-            onPress={() => navigation.goBack()}
+            onPress={() => navigationService.navigate(ROUTES.NAVIGATOR.HOME)}
             size={32}
             borderRadius={20}
             iconName="arrow-left"
