@@ -7,7 +7,6 @@ export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
   },
   searchInput: {
     backgroundColor: 'white',
@@ -26,7 +25,6 @@ export default StyleSheet.create({
     },
   },
   listItemWrapper: {
-    flex: 1,
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
@@ -42,7 +40,6 @@ export default StyleSheet.create({
     width: '100%',
   },
   searchWrapper:{
-    flex: 1,
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -59,7 +56,6 @@ export default StyleSheet.create({
     color: '#000',
   },
   addCustomerWrapper: {
-    flex: 1,
     width: '100%',
     padding: 20,
     justifyContent: 'flex-start',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, View, Picker } from 'react-native';
+import { TextInput, View, Picker, Text } from 'react-native';
 
 import ExchangeContainer from '../../containers/exchange.container';
 
@@ -23,7 +23,9 @@ class ExchangeScreen extends Component {
   };
 
   render() {
+    const { isUpdate } = this.props;
     const { exchangeType, price } = this.state;
+
     return (
       <ExchangeContainer>
         {() => (
@@ -32,7 +34,9 @@ class ExchangeScreen extends Component {
               <Picker
                 selectedValue={exchangeType}
                 style={styles.picker}
-                onValueChange={itemValue => this.setState({ exchangeType: itemValue })}
+                onValueChange={itemValue =>
+                  this.setState({ exchangeType: itemValue })
+                }
               >
                 <Picker.Item label="Java" value="java" />
                 <Picker.Item label="JavaScript" value="js" />
@@ -42,12 +46,29 @@ class ExchangeScreen extends Component {
                 <Picker.Item label="JavaScript" value="js2" />
               </Picker>
               <TextInput
-                value={price.toString()}
+                value={`${price.toString()}₺`}
                 onChangeText={value => this.setState({ price: value })}
                 style={styles.textInput}
                 keyboardType="number-pad"
               />
             </View>
+
+            <View>
+              <Text style={styles.quickTitle}>Musteri Bilgileri</Text>
+              <TextInput
+                onChangeText={value => this.setState({ customerId: value })}
+                style={styles.customerInput}
+                placeholder="Musteri adi giriniz"
+              />
+
+              <TextInput
+                onChangeText={value => this.setState({ customerNote: value })}
+                style={[styles.customerInput, styles.notArea]}
+                placeholder="Musteri notu"
+                multiline
+              />
+            </View>
+
             <View style={styles.bottomView}>
               <IconButton
                 onPress={this._addButtonOnPress}
@@ -55,14 +76,16 @@ class ExchangeScreen extends Component {
                 borderRadius={32}
                 iconName="plus"
               />
-              <IconButton
-                onPress={this._closeButtonOnPress}
-                size={30}
-                borderRadius={20}
-                iconName="close"
-                color="#4A98F7"
-                backgroundColor="white"
-              />
+              {isUpdate && (
+                <IconButton
+                  onPress={this._closeButtonOnPress}
+                  size={30}
+                  borderRadius={20}
+                  iconName="close"
+                  color="#4A98F7"
+                  backgroundColor="white"
+                />
+              )}
             </View>
           </View>
         )}
