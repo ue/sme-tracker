@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AreaChart } from 'react-native-svg-charts';
@@ -12,48 +12,77 @@ import {
 
 import ActivityContainer from '../../containers/activity.container';
 
-import styles from './acticity.styles';
+import styles from './activity.styles';
 
 const LIST_DATA = [
-  { name: 'Sac Kesimi', price: '20', icon: '', id: 1 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 2 },
-  { name: 'Sac Kesimi', price: '30', icon: '', id: 3 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 4 },
-  { name: 'Sac Kesimi', price: '20', icon: '', id: 5 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 6 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 7 },
+  { name: 'Sac Kesimi', price: 20, icon: '', id: 1 },
+  { name: 'Sac Kesimi', price: 10, icon: '', id: 2 },
+  { name: 'Sac Kesimi', price: 30, icon: '', id: 3 },
+  { name: 'Sac Kesimi', price: 10, icon: '', id: 4 },
+  { name: 'Sac Kesimi', price: 20, icon: '', id: 5 },
 ];
 
-class ActivityScreen extends Component {
-  state = {};
-
-  _renderItem = ({ item }) => (
-    <View style={styles.listItemView}>
-      <Placeholder Animation={Fade} Left={PlaceholderMedia}>
-        <PlaceholderLine />
-        <PlaceholderLine width={30} />
-      </Placeholder>
+const _renderItem = ({ item }) => (
+  <View style={styles.listItemView}>
+    <View style={styles.listItemLeft}>
+      <Icon style={styles.icon} name="content-cut" size={35} />
+      <View>
+        <Text>{item.type}</Text>
+        <Text>{item.customer.name}</Text>
+      </View>
     </View>
-  );
+    <View>
+      <Text>{item.price}</Text>
+    </View>
+  </View>
+);
 
-  _keyExtractor = item => item.id.toString();
+const _renderListPlaceHolder = () => (
+  <View style={styles.listItemView}>
+    <Placeholder Animation={Fade} Left={PlaceholderMedia}>
+      <PlaceholderLine />
+      <PlaceholderLine width={30} />
+    </Placeholder>
+  </View>
+);
 
-  render() {
-    const data = LIST_DATA.map(item => parseInt(item.price, 10));
-    return (
-      <ActivityContainer>
-        {() => (
+const _renderHeader = (dailyTotal, monthlyTotal) => (
+  <View style={styles.informationView}>
+    <Text style={styles.dailyPriceText}>{`${dailyTotal} ₺`}</Text>
+    <Text>Gunluk</Text>
+    <Text style={styles.monthlyPriceText}>{`${monthlyTotal} ₺`}</Text>
+    <Text>Aylik</Text>
+  </View>
+);
+
+const _renderHeaderPlaceHolder = () => (
+  <View style={styles.informationView}>
+    <Placeholder Animation={Fade}>
+      <PlaceholderLine width={30} style={styles.center} />
+      <Text style={styles.center}>Gunluk</Text>
+      <PlaceholderLine width={30} style={styles.center} />
+      <Text style={styles.center}>Aylik</Text>
+    </Placeholder>
+  </View>
+);
+
+const _keyExtractor = item => item.id.toString();
+
+const ActivityScreen = () => {
+  return (
+    <ActivityContainer>
+      {({ activities }) => {
+        const data = activities.length > 0 ? activities : LIST_DATA;
+        const dailyTotal = data.reduce((a, b) => a + b.price, 0);
+        return (
           <View style={styles.container}>
             <View style={styles.topView}>
-              <View style={styles.informatinView}>
-                <Text style={styles.dailyPriceText}>1.265 ₺</Text>
-                <Text>Gunluk</Text>
-                <Text style={styles.mountlyPriceText}>15.320 ₺</Text>
-                <Text>Aylik</Text>
-              </View>
+              {activities.length > 0
+                ? _renderHeader(dailyTotal, 1000)
+                : _renderHeaderPlaceHolder()}
               <AreaChart
                 style={styles.chart}
-                data={data}
+                data={data.map(item => item.price)}
                 curve={shape.curveNatural}
                 svg={{ fill: 'rgba(100, 170, 255, 1)' }}
                 gridMin={0}
@@ -61,16 +90,18 @@ class ActivityScreen extends Component {
             </View>
             <View style={styles.bottomView}>
               <FlatList
-                data={LIST_DATA}
-                keyExtractor={this._keyExtractor}
-                renderItem={this._renderItem}
+                data={data}
+                keyExtractor={_keyExtractor}
+                renderItem={
+                  activities.length > 0 ? _renderItem : _renderListPlaceHolder
+                }
               />
             </View>
           </View>
-        )}
-      </ActivityContainer>
-    );
-  }
-}
+        );
+      }}
+    </ActivityContainer>
+  );
+};
 
 export default ActivityScreen;
