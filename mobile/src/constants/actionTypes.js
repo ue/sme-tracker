@@ -7,3 +7,7 @@ export const ADD_USER = 'ADD_USER';
 export const USER_REQUEST = 'USER_REQUEST';
 export const USER_REQUEST_FAIL = 'USER_REQUEST_FAIL';
 export const USER_LOGOUT = 'USER_LOGOUT';
+
+export const ACTIVITY_REQUEST = 'ACTIVITY_REQUEST';
+export const ACTIVITY_FAIL = 'ACTIVITY_FAIL';
+export const SET_ACTIVITY = 'SET_ACTIVITY';

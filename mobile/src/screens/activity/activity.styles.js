@@ -14,7 +14,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  informatinView: {
+  informationView: {
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
@@ -23,7 +23,6 @@ export default StyleSheet.create({
     flex: 3,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
   },
   listItemView: {
     padding: 20,
@@ -53,9 +52,12 @@ export default StyleSheet.create({
     marginTop: 50,
     fontWeight: 'bold',
   },
-  mountlyPriceText: {
+  monthlyPriceText: {
     fontSize: 25,
     marginTop: 20,
     fontWeight: 'bold',
+  },
+  center: {
+    alignSelf: 'center',
   },
 });
