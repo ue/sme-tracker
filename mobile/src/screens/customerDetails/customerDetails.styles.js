@@ -5,44 +5,25 @@ const deviceWidth = Dimensions.get('window').width;
 
 export default StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  searchInput: {
-    backgroundColor: 'white',
-    width: '90%',
-    height: 50,
-    paddingLeft: 25,
-    color: '#8e9fb4',
-    fontSize: 17,
-    shadowColor: 'red',
-    borderRadius: 25,
-    shadowColor: '#8e9fb4',
-    shadowOpacity: 0.5,
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
+    flexDirection: 'column',
   },
   listItemWrapper: {
-    flex: 1,
-    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     width: '100%',
     padding: 20,
   },
+  employeeName: {
+    fontWeight: '500',
+  },
   listItem: {
-    height: 43,
     justifyContent: 'flex-start',
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
   },
   searchWrapper:{
-    flex: 1,
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -57,24 +38,26 @@ export default StyleSheet.create({
   listItemText: {
     fontSize: 16,
     color: '#000',
-  },
-  addCustomerWrapper: {
-    flex: 1,
-    width: '100%',
-    padding: 20,
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  buttonTitle: {
-    marginLeft: 10,
-    fontSize: 17,
-    fontWeight: '400',
+    maxWidth: '90%',
   },
   quickTitle: {
+    marginTop: 20,
     fontSize: 14,
     fontWeight: '500',
     width: '100%',
-    marginLeft: 40,
-  }
+    marginLeft: 20,
+  },
+  employeeWrapper: {
+    flexDirection: 'row',
+    marginBottom: 5,
+  },
+  date: {
+    fontSize: 12,
+    padding: 3,
+    color: '#333'
+  },
+  backIcon: {
+    marginLeft: 10,
+    width: 50,
+  },
 });

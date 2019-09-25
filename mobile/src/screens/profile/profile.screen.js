@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Button } from 'react-native';
 
 import ProfileContainer from '../../containers/profile.container';
 import styles from './profile.styles';
@@ -21,7 +21,7 @@ class ProfileScreen extends Component {
               <Text style={styles.indicatorText}>(Yonetici)</Text>
             </View>
             <View style={styles.bodyWrapper}>
-              <Text>sa</Text>
+              <Button title="Cikis" />
             </View>
           </View>
         )}

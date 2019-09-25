@@ -38,7 +38,7 @@ const Home = createBottomTabNavigator(
       screen: Exchange,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
-          <IconButton noButton size={25} iconName="plus" />
+          <IconButton onPress={() => alert('as')} noButton size={25} iconName="plus" />
         ),
       }),
     },

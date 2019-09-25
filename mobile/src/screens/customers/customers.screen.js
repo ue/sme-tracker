@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconButton from '../../components/iconButton/iconButton.view';
+import navigationService from '../../services/navigationService';
 
 import ROUTES from '../../constants/routeNames';
 
@@ -52,7 +53,7 @@ class CustomersScreen extends Component {
   state = {};
 
   _renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.listItemWrapper}>
+    <TouchableOpacity style={styles.listItemWrapper} onPress={() => navigationService.navigate(ROUTES.SCREENS.CUSTOMER_DETAILS, item)}>
       <View style={styles.listItem}>
         <Icon style={styles.icon} name="account-circle-outline" size={35} />
         <Text style={styles.listItemText}>{item.name}</Text>
