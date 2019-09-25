@@ -32,4 +32,29 @@ export default StyleSheet.create({
   picker: {
     width: deviceWidth / 2,
   },
+  quickTitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    width: '100%',
+    marginLeft: 5,
+  },
+  notArea: {
+    paddingTop: 15,
+    minHeight: 100,
+    maxHeight: 170,
+  },
+  customerInput: {
+    fontSize: 30,
+    marginTop: 20,
+    minWidth: '40%',
+    maxWidth: '40%',
+    borderWidth: 1,
+    minWidth: '80%',
+    fontSize: 16,
+    minHeight: 50,
+    borderRadius: 15,
+    borderColor: '#cfcfcf',
+    color: '#333',
+    padding: 10,
+  },
 });

@@ -38,7 +38,7 @@ export const registerWithEmail = ({ email, password }) => async dispatch => {
   try {
     const user = await auth().createUserWithEmailAndPassword(email, password);
     dispatch(addUserData(user));
-    NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
+    NavigationService.navigate(ROUTES.NAVIGATOR.HOME);
   } catch (e) {
     dispatch(failUserRequest(e.message));
   }
@@ -50,7 +50,7 @@ export const loginWithEmail = ({ email, password }) => async dispatch => {
   try {
     const user = await auth().signInWithEmailAndPassword(email, password);
     dispatch(addUserData(user));
-    NavigationService.navigate(ROUTES.NAVIGATOR.AUTH);
+    NavigationService.navigate(ROUTES.NAVIGATOR.HOME);
   } catch (e) {
     dispatch(failUserRequest(e.message));
   }

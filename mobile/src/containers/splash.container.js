@@ -15,7 +15,7 @@ const SplashContainer = ({ children }) => {
     const unsubscribe = auth().onAuthStateChanged(currentUser => {
       if (currentUser) {
         dispatch(addUserData(currentUser));
-        navigation.navigate(ROUTES.NAVIGATOR.AUTH);
+        navigation.navigate(ROUTES.NAVIGATOR.HOME);
       } else {
         navigation.navigate(ROUTES.NAVIGATOR.NO_AUTH);
       }

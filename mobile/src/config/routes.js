@@ -16,7 +16,7 @@ import Customer from '../screens/customers/customers.screen';
 import CustomerDetails from '../screens/customerDetails/customerDetails.screen';
 import NewCustomer from '../screens/newCustomers/newCustomers.screen';
 
-const Auth = createBottomTabNavigator(
+const Home = createBottomTabNavigator(
   {
     [ROUTES.TABBAR.DAILY]: {
       screen: Activity,
@@ -34,12 +34,14 @@ const Auth = createBottomTabNavigator(
         ),
       }),
     },
-    // [ROUTES.TABBAR.ADD_ITEM]: {
-    //   screen: Exchange,
-    //   navigationOptions: () => ({
-    //     tabBarIcon: () => <IconButton noButton size={25} iconName="plus" />,
-    //   }),
-    // },
+    [ROUTES.TABBAR.ADD_ITEM]: {
+      screen: Exchange,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => (
+          <IconButton noButton size={25} iconName="plus" />
+        ),
+      }),
+    },
     [ROUTES.TABBAR.SUMMARY]: {
       screen: Report,
       navigationOptions: () => ({
@@ -68,12 +70,6 @@ const Auth = createBottomTabNavigator(
 
 const stackNavigation = createStackNavigator(
   {
-    [ROUTES.SCREENS.ADD_ITEM]: {
-      screen: Exchange,
-      navigationOptions: {
-        header: () => null,
-      },
-    },
     [ROUTES.SCREENS.NEW_CUSTOMER]: {
       screen: NewCustomer,
       navigationOptions: {
@@ -95,7 +91,7 @@ const stackNavigation = createStackNavigator(
 const RootNavigator = createSwitchNavigator(
   {
     stackNavigation,
-    [ROUTES.NAVIGATOR.AUTH]: Auth,
+    [ROUTES.NAVIGATOR.HOME]: Home,
     [ROUTES.SCREENS.SPLASH]: Splash,
     [ROUTES.NAVIGATOR.NO_AUTH]: Login,
   },

@@ -12,6 +12,7 @@ const IconButton = ({
   iconName,
   noButton,
   onPress,
+  containerStyle,
   ...props
 }) => {
   if (noButton) {
@@ -24,7 +25,7 @@ const IconButton = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.container, { borderRadius }, { backgroundColor }]}
+      style={[styles.container, containerStyle, { borderRadius }, { backgroundColor }]}
     >
       <Icon name={iconName} color={color} size={size} {...props} />
     </TouchableOpacity>
