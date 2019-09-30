@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { TextInput } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   View,
   FlatList,
   Text,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconButton from '../../components/iconButton/iconButton.view';
 
 import ActivityContainer from '../../containers/activity.container';
@@ -15,47 +16,8 @@ import ROUTES from '../../constants/routeNames';
 import styles from './newCustomers.styles';
 import navigationService from '../../services/navigationService';
 
-const CUSTOMER_DATA = [
-  {
-    name: 'Ugur Erdal',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
-    id: 1,
-  },
-  { name: 'Erdal', icon: '', avatar: 'https://via.placeholder.com/150', id: 2 },
-  {
-    name: 'Mustafa',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
-    id: 3,
-  },
-  { name: 'Ahmet', icon: '', avatar: 'https://via.placeholder.com/150', id: 4 },
-  {
-    name: 'Mehmet',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
-    id: 5,
-  },
-  {
-    name: 'Julide',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
-    id: 6,
-  },
-  { name: 'Necla', icon: '', avatar: 'https://via.placeholder.com/150', id: 7 },
-];
-
 class CustomersScreen extends Component {
   state = {};
-
-  _renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.listItemWrapper}>
-      <View style={styles.listItem}>
-        <Icon style={styles.icon} name="account-circle-outline" size={35} />
-        <Text style={styles.listItemText}>{item.name}</Text>
-      </View>
-    </TouchableOpacity>
-  );
 
   _keyExtractor = item => item.id.toString();
 
@@ -64,22 +26,35 @@ class CustomersScreen extends Component {
 
     return (
       <SafeAreaView style={styles.container}>
-
-          <IconButton
-            onPress={() => navigationService.navigate(ROUTES.NAVIGATOR.HOME)}
-            size={32}
-            borderRadius={20}
-            iconName="arrow-left"
-            color="#4A98F7"
-            backgroundColor="white"
-          />
-
-        <Text style={styles.quickTitle}>yeni musteri</Text>
-        <FlatList
-          data={CUSTOMER_DATA}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
+        <Icon
+          style={styles.icon}
+          name="arrow-left"
+          size={35}
+          onPress={() => navigationService.navigate(ROUTES.TABBAR.CUSTOMERS)}
         />
+
+        <Text style={styles.quickTitle}>Yeni Musteri</Text>
+
+        <TextInput
+          onChangeText={value => this.setState({ customerId: value })}
+          style={styles.customerInput}
+          placeholder="Musteri adi giriniz"
+        />
+
+        <TextInput
+          onChangeText={value => this.setState({ customerNote: value })}
+          style={[styles.customerInput, styles.notArea]}
+          placeholder="Musteri notu"
+          multiline
+        />
+        <View style={styles.bottomView}>
+          <IconButton
+            onPress={() => navigationService.navigate(ROUTES.TABBAR.CUSTOMERS)}
+            size={55}
+            borderRadius={32}
+            iconName="plus"
+          />
+        </View>
       </SafeAreaView>
     );
   }

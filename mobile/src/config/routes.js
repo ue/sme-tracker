@@ -38,7 +38,7 @@ const Home = createBottomTabNavigator(
       screen: Insertion,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
-          <IconButton noButton size={25} iconName="plus" />
+          <IconButton onPress={() => alert('as')} noButton size={25} iconName="plus" />
         ),
       }),
     },

@@ -22,6 +22,8 @@ export default StyleSheet.create({
   bodyWrapper: {
     flex: 1.2,
     width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   name: {
     fontSize: 20,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   View,
   Image,
@@ -6,53 +6,58 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
 } from 'react-native';
+import navigationService from '../../services/navigationService';
+import ROUTES from '../../constants/routeNames';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconButton from '../../components/iconButton/iconButton.view';
+import { withNavigation } from 'react-navigation';
 
 import ActivityContainer from '../../containers/activity.container';
 
 import styles from './customerDetails.styles';
 
-const CUSTOMER_DATA = [
+const CUSTOMER_NOTES = [
   {
-    name: 'Ugur Erdal',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
+    employee: 'Kubra gun',
+    note:
+      'Sac boyandi boya renk: #333342 Sac boyandi boya renk: #333342. Manikur yapildi fon cekildi. Oje kodu #343434',
+    date: '21 Mart 2019',
     id: 1,
   },
-  { name: 'Erdal', icon: '', avatar: 'https://via.placeholder.com/150', id: 2 },
   {
-    name: 'Mustafa',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
-    id: 3,
-  },
-  { name: 'Ahmet', icon: '', avatar: 'https://via.placeholder.com/150', id: 4 },
-  {
-    name: 'Mehmet',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
-    id: 5,
+    employee: 'Gokhan',
+    note: 'Rofle yapildi',
+    date: '8 Ocak 2019',
+    id: 1,
   },
   {
-    name: 'Julide',
-    icon: '',
-    avatar: 'https://via.placeholder.com/150',
-    id: 6,
+    employee: 'Ugur Erdal',
+    note: 'Manikur ve agda yapildi',
+    date: '15 Haziran 2019',
+    id: 1,
   },
-  { name: 'Necla', icon: '', avatar: 'https://via.placeholder.com/150', id: 7 },
 ];
 
 class CustomersScreen extends Component {
-  state = {};
+  state = {
+    navigationParams: this.props.navigation.state.params,
+  };
 
   _renderItem = ({ item }) => (
     <TouchableOpacity style={styles.listItemWrapper}>
       <View style={styles.listItem}>
-        <Icon style={styles.icon} name="account-circle-outline" size={35} />
-        <Text style={styles.listItemText}>{item.name}</Text>
+        <Icon style={styles.icon} name="content-cut" size={35} />
+        <View>
+          <View style={styles.employeeWrapper}>
+            <Text style={[styles.listItemText, styles.employeeName]}>
+              {item.employee}
+            </Text>
+            <Text style={styles.date}>({item.date})</Text>
+          </View>
+          <Text style={styles.listItemText}>{item.note}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -60,22 +65,20 @@ class CustomersScreen extends Component {
   _keyExtractor = item => item.id.toString();
 
   render() {
-    const data = CUSTOMER_DATA.map(item => parseInt(item.price, 10));
+    const { navigationParams } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.searchWrapper}>
-          <TextInput
-            placeholder="Ara..."
-            onChangeText={value => this.setState({ price: value })}
-            style={styles.searchInput}
-          />
-        </View>
+        <Icon
+          style={styles.backIcon}
+          name="arrow-left"
+          size={35}
+          onPress={() => navigationService.navigate(ROUTES.TABBAR.CUSTOMERS)}
+        />
 
-
-        <Text style={styles.quickTitle}>Musteri detay</Text>
+        <Text style={styles.quickTitle}>{navigationParams.name} Hanim</Text>
         <FlatList
-          data={CUSTOMER_DATA}
+          data={CUSTOMER_NOTES}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
         />
@@ -84,4 +87,4 @@ class CustomersScreen extends Component {
   }
 }
 
-export default CustomersScreen;
+export default withNavigation(CustomersScreen);
