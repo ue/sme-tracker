@@ -5,6 +5,7 @@ import { fetchEmployeeDailyActivities } from '../redux/actions/activities.action
 
 const ActivityContainer = ({ children }) => {
   const dispatch = useDispatch();
+
   const storeId = useSelector(
     state => state.user.user && state.user.user.storeId,
   );

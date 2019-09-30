@@ -21,7 +21,7 @@ export const fetchEmployeeDailyActivities = ({
 
     const beginningDate = new Date();
     beginningDate.setHours(0, 0, 0, 0);
-    console.log('beginningDate :', beginningDate);
+
     let activityQuery = await firestore()
       .collection('stores')
       .doc(storeId)
@@ -29,19 +29,18 @@ export const fetchEmployeeDailyActivities = ({
       .where('employee', '==', employeeRef)
       .where('createdAt', '>=', beginningDate)
       .get();
-    console.log('activityQuery :', activityQuery);
 
     await Promise.all(
       await activityQuery.docs.map(async item => {
         const activity = item.data();
-        console.log('activity :', activity);
+
         const customer = await activity.customer.get();
         const employee = await activity.employee.get();
 
         activity.customer = customer.data();
         activity.employee = employee.data();
         activity.id = item.id;
-        console.log('activity.time.toDate() :', activity.createdAt.toDate());
+
         activities.push(activity);
       }),
     );

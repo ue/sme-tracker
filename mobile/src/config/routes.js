@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ROUTES from '../constants/routeNames';
 
 import IconButton from '../components/iconButton/iconButton.view';
-import Exchange from '../screens/exchange/exchange.screen';
+import Insertion from '../screens/insertion/insertion.screen';
 import Activity from '../screens/activity/activity.screen';
 import Report from '../screens/report/report.screen';
 import Splash from '../screens/splash/splash.screen';
@@ -35,7 +35,7 @@ const Home = createBottomTabNavigator(
       }),
     },
     [ROUTES.TABBAR.ADD_ITEM]: {
-      screen: Exchange,
+      screen: Insertion,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <IconButton noButton size={25} iconName="plus" />
