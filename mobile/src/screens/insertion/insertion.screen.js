@@ -13,14 +13,17 @@ const InsertionScreen = () => {
   const [price, setPrice] = useState(0);
   const [customerName, setCustomerName] = useState('');
   const [customerNote, setCustomerNote] = useState('');
+  const [customerId, setCustomerId] = useState(null);
 
   const _closeButtonOnPress = () => {
     setType('Java');
     setPrice(0);
     setCustomerName('');
     setCustomerNote('');
+    setCustomerId(null);
   };
 
+  console.log('price :', price);
   return (
     <InsertionContainer>
       {({ fetchCustomers, insertActivity, customers }) => (
@@ -39,7 +42,7 @@ const InsertionScreen = () => {
               <Picker.Item label="JavaScript" value="js2" />
             </Picker>
             <TextInput
-              value={`${price.toString()}₺`}
+              value={price.toString()}
               onChangeText={value => setPrice(value)}
               style={styles.textInput}
               keyboardType="number-pad"
@@ -68,9 +71,12 @@ const InsertionScreen = () => {
                   onPress={() => {
                     setCustomerName(item.name);
                     fetchCustomers();
+                    setCustomerId(item.id);
                   }}
                 >
-                  <Text style={styles.itemText}>{item.name}</Text>
+                  <Text key={item.id} style={styles.itemText}>
+                    {item.name}
+                  </Text>
                 </TouchableOpacity>
               )}
             />
@@ -92,6 +98,8 @@ const InsertionScreen = () => {
                   price,
                   customerName,
                   customerNote,
+                  customerId,
+                  callback: _closeButtonOnPress,
                 })
               }
               size={55}

@@ -73,7 +73,7 @@ const ActivityScreen = () => {
     <ActivityContainer>
       {({ activities }) => {
         const data = activities.length > 0 ? activities : LIST_DATA;
-        const dailyTotal = data.reduce((a, b) => a + b.price, 0);
+        const dailyTotal = data.reduce((a, b) => a + parseInt(b.price, 10), 0);
         return (
           <View style={styles.container}>
             <View style={styles.topView}>
@@ -82,7 +82,7 @@ const ActivityScreen = () => {
                 : _renderHeaderPlaceHolder()}
               <AreaChart
                 style={styles.chart}
-                data={data.map(item => item.price)}
+                data={data.map(item => parseInt(item.price, 10))}
                 curve={shape.curveNatural}
                 svg={{ fill: 'rgba(100, 170, 255, 1)' }}
                 gridMin={0}

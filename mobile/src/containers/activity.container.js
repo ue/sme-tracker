@@ -16,6 +16,7 @@ const ActivityContainer = ({ children }) => {
     dispatch(fetchEmployeeDailyActivities({ storeId, userId }));
   }, [dispatch, storeId, userId]);
 
+  console.log('activities :', activities);
   return children && children({ activities });
 };
 

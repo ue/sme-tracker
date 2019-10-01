@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { fetchCustomers } from '../services/firebaseService';
+import { fetchCustomers, insertActivity } from '../services/firebaseService';
 
 const InsertionContainer = ({ children }) => {
   const [customers, setCustomers] = useState([]);
   const storeId = useSelector(
     state => state.user.user && state.user.user.storeId,
   );
+  const userId = useSelector(state => state.user.user && state.user.user.uid);
 
   const _fetchCustomers = text => {
     if (text) {
@@ -17,7 +18,14 @@ const InsertionContainer = ({ children }) => {
     }
   };
 
-  const _insertActivity = ({ type, price, customerName, customerNote }) => {
+  const _insertActivity = ({
+    type,
+    price,
+    customerName,
+    customerNote,
+    customerId,
+    callback,
+  }) => {
     console.log(
       'type, price, customerName, customerNote  :',
       type,
@@ -25,6 +33,19 @@ const InsertionContainer = ({ children }) => {
       customerName,
       customerNote,
     );
+    insertActivity({
+      type,
+      price,
+      customerName,
+      customerNote,
+      customerId,
+      storeId,
+      userId,
+    })
+      .then(result => {
+        callback();
+      })
+      .catch(err => {});
     // coming soon
   };
 
