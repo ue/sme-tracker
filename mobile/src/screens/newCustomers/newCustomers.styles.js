@@ -4,8 +4,6 @@ const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
 export default StyleSheet.create({
-  container: {
-  },
   icon: {
     marginLeft: 10,
   },
@@ -16,10 +14,8 @@ export default StyleSheet.create({
     marginLeft: 20,
   },
   customerInput: {
-    fontSize: 30,
     marginTop: 20,
     marginLeft: 20,
-    minWidth: '40%',
     maxWidth: '40%',
     borderWidth: 1,
     minWidth: '90%',

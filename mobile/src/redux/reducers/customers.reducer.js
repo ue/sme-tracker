@@ -3,9 +3,10 @@ import {
   STATUS_REQUEST,
   STATUS_SUCCESS,
   STATUS_FAIL,
-  ACTIVITY_FAIL,
-  ACTIVITY_REQUEST,
-  SET_ACTIVITY,
+  CUSTOMER_REQUEST,
+  CUSTOMER_FAIL,
+  SET_CUSTOMER,
+  ADD_CUSTOMER,
 } from '../../constants/actionTypes';
 
 const initialState = {
@@ -16,24 +17,31 @@ const initialState = {
 
 export default (state = initialState, { type, data, error }) => {
   switch (type) {
-    case ACTIVITY_REQUEST:
+    case CUSTOMER_REQUEST:
       return {
         ...state,
-        data: null,
+        data: [],
         error: null,
         status: STATUS_REQUEST,
       };
-    case ACTIVITY_FAIL:
+    case CUSTOMER_FAIL:
       return {
         ...state,
-        data: null,
+        data: [],
         error: error,
         status: STATUS_FAIL,
       };
-    case SET_ACTIVITY:
+    case SET_CUSTOMER:
       return {
         ...state,
         data,
+        error: null,
+        status: STATUS_SUCCESS,
+      };
+    case ADD_CUSTOMER:
+      return {
+        ...state,
+        data: [...state.data, data],
         error: null,
         status: STATUS_SUCCESS,
       };

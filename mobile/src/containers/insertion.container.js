@@ -46,7 +46,6 @@ const InsertionContainer = ({ children }) => {
         callback();
       })
       .catch(err => {});
-    // coming soon
   };
 
   return (
