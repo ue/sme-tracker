@@ -44,15 +44,27 @@ class ActivityScreen extends Component {
   _keyExtractor = item => item.id.toString();
 
   _dailyReportTab = () => (
-    <FlatList data={LIST_DATA} keyExtractor={this._keyExtractor} renderItem={this._renderItem} />
+    <FlatList
+      data={LIST_DATA}
+      keyExtractor={this._keyExtractor}
+      renderItem={this._renderItem}
+    />
   );
 
   _monthlyReportTab = () => (
-    <FlatList data={LIST_DATA} keyExtractor={this._keyExtractor} renderItem={this._renderItem} />
+    <FlatList
+      data={LIST_DATA}
+      keyExtractor={this._keyExtractor}
+      renderItem={this._renderItem}
+    />
   );
 
   _yearlyReportTab = () => (
-    <FlatList data={LIST_DATA} keyExtractor={this._keyExtractor} renderItem={this._renderItem} />
+    <FlatList
+      data={LIST_DATA}
+      keyExtractor={this._keyExtractor}
+      renderItem={this._renderItem}
+    />
   );
 
   render() {

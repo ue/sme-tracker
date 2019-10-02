@@ -9,6 +9,8 @@ import {
 import ROUTES from '../../constants/routeNames';
 import NavigationService from '../../services/navigationService';
 
+import { fetchStoreData } from './store.action';
+
 export const addUserData = user => async dispatch => {
   dispatch({ type: USER_REQUEST });
 
@@ -18,9 +20,13 @@ export const addUserData = user => async dispatch => {
       .doc(user.uid)
       .get();
 
+    const userData = documentSnapshot.data();
+
+    dispatch(fetchStoreData(userData));
+
     dispatch({
       type: ADD_USER,
-      data: { ...user.toJSON(), ...documentSnapshot.data() },
+      data: { ...user.toJSON(), ...userData },
     });
   } catch (e) {
     dispatch(failUserRequest(e.message));

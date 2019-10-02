@@ -46,7 +46,6 @@ export const fetchEmployeeDailyActivities = ({
     );
     dispatch(setActivity(activities));
   } catch (e) {
-    console.log('e :', e);
     dispatch(fail(e.message));
   }
 };

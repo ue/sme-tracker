@@ -9,6 +9,9 @@ const InsertionContainer = ({ children }) => {
     state => state.user.user && state.user.user.storeId,
   );
   const userId = useSelector(state => state.user.user && state.user.user.uid);
+  const activityTypes = useSelector(
+    state => (state.store.data && state.store.data.productTypes) || [],
+  );
 
   const _fetchCustomers = text => {
     if (text) {
@@ -54,6 +57,7 @@ const InsertionContainer = ({ children }) => {
       fetchCustomers: _fetchCustomers,
       insertActivity: _insertActivity,
       customers,
+      activityTypes,
     })
   );
 };

@@ -23,10 +23,9 @@ const InsertionScreen = () => {
     setCustomerId(null);
   };
 
-  console.log('price :', price);
   return (
     <InsertionContainer>
-      {({ fetchCustomers, insertActivity, customers }) => (
+      {({ fetchCustomers, insertActivity, customers, activityTypes }) => (
         <View style={styles.container}>
           <View style={styles.topView}>
             <Picker
@@ -34,12 +33,13 @@ const InsertionScreen = () => {
               style={styles.picker}
               onValueChange={value => setType(value)}
             >
-              <Picker.Item label="Java" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="Java" value="java1" />
-              <Picker.Item label="JavaScript" value="js1" />
-              <Picker.Item label="Java" value="java2" />
-              <Picker.Item label="JavaScript" value="js2" />
+              {activityTypes.map(item => (
+                <Picker.Item
+                  key={item.key}
+                  label={item.text}
+                  value={item.key}
+                />
+              ))}
             </Picker>
             <TextInput
               value={price.toString()}
