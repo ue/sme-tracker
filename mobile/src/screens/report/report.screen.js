@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { View, FlatList, Text, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AreaChart } from 'react-native-svg-charts';
@@ -9,78 +9,54 @@ import ReportContainer from '../../containers/report.container';
 
 import styles from './report.styles';
 
-const LIST_DATA = [
-  { name: 'Sac Kesimi', price: '20', icon: '', id: 1 },
-  { name: 'Sac Kesimi', price: '50', icon: '', id: 2 },
-  { name: 'Sac Kesimi', price: '30', icon: '', id: 3 },
-  { name: 'Sac Kesimi', price: '20', icon: '', id: 4 },
-  { name: 'Sac Kesimi', price: '20', icon: '', id: 5 },
-  { name: 'Sac Kesimi', price: '10', icon: '', id: 6 },
-  { name: 'Sac Kesimi', price: '30', icon: '', id: 7 },
-];
-
-class ActivityScreen extends Component {
-  state = {
-    index: 0,
-    routes: [
-      { key: 'daily', title: 'Gunluk' },
-      { key: 'monthly', title: 'Aylik' },
-      { key: 'yearly', title: 'Yillik' },
-    ],
-  };
-
-  _renderItem = ({ item }) => (
-    <View style={styles.listItemView}>
-      <View style={styles.listItemLeft}>
-        <Icon style={styles.icon} name="content-cut" size={35} />
-        <Text>{item.name}</Text>
-      </View>
-      <View>
-        <Text>{item.price}</Text>
-      </View>
+const _renderItem = ({ item, activityTypes }) => (
+  <View style={styles.listItemView}>
+    <View style={styles.listItemLeft}>
+      <Icon style={styles.icon} name="content-cut" size={35} />
+      <Text>{activityTypes.filter(i => i.key === item.name)[0].text}</Text>
     </View>
-  );
+    <View>
+      <Text>{item.price}</Text>
+    </View>
+  </View>
+);
 
-  _keyExtractor = item => item.id.toString();
+const _keyExtractor = item => item.name;
 
-  _dailyReportTab = () => (
-    <FlatList
-      data={LIST_DATA}
-      keyExtractor={this._keyExtractor}
-      renderItem={this._renderItem}
-    />
-  );
+const _reportTab = (data, activityTypes) => (
+  <FlatList
+    data={data}
+    keyExtractor={_keyExtractor}
+    renderItem={({ item }) => _renderItem({ item, activityTypes })}
+  />
+);
 
-  _monthlyReportTab = () => (
-    <FlatList
-      data={LIST_DATA}
-      keyExtractor={this._keyExtractor}
-      renderItem={this._renderItem}
-    />
-  );
+const ActivityScreen = () => {
+  const [index, setIndex] = useState(1);
+  const [routes, setRoutes] = useState([
+    { key: 'daily', title: 'Gunluk' },
+    { key: 'monthly', title: 'Aylik' },
+    { key: 'yearly', title: 'Yillik' },
+  ]);
 
-  _yearlyReportTab = () => (
-    <FlatList
-      data={LIST_DATA}
-      keyExtractor={this._keyExtractor}
-      renderItem={this._renderItem}
-    />
-  );
-
-  render() {
-    const data = LIST_DATA.map(item => parseInt(item.price, 10));
-    return (
-      <ReportContainer>
-        {() => (
+  return (
+    <ReportContainer>
+      {({ dailyReport, monthlyReport, yearlyReport, activityTypes }) => {
+        return (
           <View style={styles.container}>
             <View style={styles.topView}>
               <View style={styles.informatinView}>
-                <Text style={styles.dailyPriceText}>1.265 ₺</Text>
+                <Text style={styles.dailyPriceText}>
+                  {`${monthlyReport.reduce(
+                    (a, b) => a + parseInt(b.price, 10),
+                    0,
+                  )} ₺`}
+                </Text>
                 <Text>Aylik Toplam</Text>
               </View>
               <AreaChart
                 style={styles.chart}
-                data={data}
+                data={monthlyReport.map(item => parseInt(item.price, 10))}
                 curve={shape.curveNatural}
                 svg={{ fill: 'rgba(100, 170, 255, 1)' }}
                 gridMin={0}
@@ -88,13 +64,13 @@ class ActivityScreen extends Component {
             </View>
             <View style={styles.bottomView}>
               <TabView
-                navigationState={this.state}
+                navigationState={{ index, routes }}
                 renderScene={SceneMap({
-                  daily: this._dailyReportTab,
-                  monthly: this._monthlyReportTab,
-                  yearly: this._yearlyReportTab,
+                  daily: () => _reportTab(dailyReport, activityTypes),
+                  monthly: () => _reportTab(monthlyReport, activityTypes),
+                  yearly: () => _reportTab(yearlyReport, activityTypes),
                 })}
-                onIndexChange={index => this.setState({ index })}
+                onIndexChange={i => setIndex(i)}
                 initialLayout={{ width: Dimensions.get('window').width }}
                 renderTabBar={props => (
                   <TabBar
@@ -107,10 +83,10 @@ class ActivityScreen extends Component {
               />
             </View>
           </View>
-        )}
-      </ReportContainer>
-    );
-  }
-}
+        );
+      }}
+    </ReportContainer>
+  );
+};
 
 export default ActivityScreen;

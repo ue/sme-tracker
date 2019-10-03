@@ -29,13 +29,6 @@ const InsertionContainer = ({ children }) => {
     customerId,
     callback,
   }) => {
-    console.log(
-      'type, price, customerName, customerNote  :',
-      type,
-      price,
-      customerName,
-      customerNote,
-    );
     insertActivity({
       type,
       price,

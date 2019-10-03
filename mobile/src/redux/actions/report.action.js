@@ -7,11 +7,62 @@ import {
   SET_YEARLY_REPORT,
 } from '../../constants/actionTypes';
 
-export const fetchEmployeeReports = ({ storeId, userId }) => async dispatch => {
+export const fetchEmployeeDailyReports = ({
+  storeId,
+  userId,
+}) => async dispatch => {
   dispatch({ type: REPORT_REQUEST });
   const dailyActivities = [];
+
+  try {
+    const employeeRef = await firestore()
+      .collection('stores')
+      .doc(storeId)
+      .collection('employees')
+      .doc(userId);
+
+    const beginningDate = new Date();
+    beginningDate.setHours(0, 0, 0, 0);
+
+    const dailyQuery = await firestore()
+      .collection('stores')
+      .doc(storeId)
+      .collection('activities')
+      .where('employee', '==', employeeRef)
+      .where('createdAt', '>=', beginningDate)
+      .get();
+
+    await Promise.all(
+      dailyQuery.docs.map(async item => {
+        const activityDaily = item.data();
+
+        activityDaily.id = item.id;
+
+        dailyActivities.push(activityDaily);
+      }),
+    );
+
+    let dailyReport = orderBy(dailyActivities, 'price');
+    dailyReport =
+      Object.keys(dailyReport).length > 0
+        ? Object.keys(dailyReport).map(item => ({
+            name: item,
+            price: dailyReport[item],
+          }))
+        : [];
+
+    dispatch({ type: SET_DAILY_REPORT, data: dailyReport });
+  } catch (e) {
+    dispatch(fail(e.message));
+  }
+};
+
+export const fetchEmployeeMonthlyReports = ({
+  storeId,
+  userId,
+}) => async dispatch => {
+  dispatch({ type: REPORT_REQUEST });
   const monthlyActivities = [];
-  const yearlyActivities = [];
 
   try {
     const employeeRef = await firestore()
@@ -29,16 +80,6 @@ export const fetchEmployeeReports = ({ storeId, userId }) => async dispatch => {
       1,
     );
 
-    const firstDayOfYear = new Date(new Date().getFullYear(), 0, 1);
-
-    const dailyQuery = await firestore()
-      .collection('stores')
-      .doc(storeId)
-      .collection('activities')
-      .where('employee', '==', employeeRef)
-      .where('createdAt', '>=', beginningDate)
-      .get();
-
     const monthlyQuery = await firestore()
       .collection('stores')
       .doc(storeId)
@@ -46,6 +87,47 @@ export const fetchEmployeeReports = ({ storeId, userId }) => async dispatch => {
       .where('employee', '==', employeeRef)
       .where('createdAt', '>=', firstDayOfMonth)
       .get();
+
+    await Promise.all(
+      monthlyQuery.docs.map(async item => {
+        const activityMonthly = item.data();
+
+        activityMonthly.id = item.id;
+
+        monthlyActivities.push(activityMonthly);
+      }),
+    );
+
+    let monthlyReport = orderBy(monthlyActivities, 'price');
+    monthlyReport =
+      Object.keys(monthlyReport).length > 0
+        ? Object.keys(monthlyReport).map(item => ({
+            name: item,
+            price: monthlyReport[item],
+          }))
+        : [];
+
+    dispatch({ type: SET_MONTHLY_REPORT, data: monthlyReport });
+  } catch (e) {
+    dispatch(fail(e.message));
+  }
+};
+
+export const fetchEmployeeYearlyReports = ({
+  storeId,
+  userId,
+}) => async dispatch => {
+  dispatch({ type: REPORT_REQUEST });
+  const yearlyActivities = [];
+
+  try {
+    const employeeRef = await firestore()
+      .collection('stores')
+      .doc(storeId)
+      .collection('employees')
+      .doc(userId);
+
+    const firstDayOfYear = new Date(new Date().getFullYear(), 0, 1);
 
     const yearlyQuery = await firestore()
       .collection('stores')
@@ -56,20 +138,6 @@ export const fetchEmployeeReports = ({ storeId, userId }) => async dispatch => {
       .get();
 
     await Promise.all(
-      dailyQuery.docs.map(async item => {
-        const activityDaily = item.data();
-
-        activityDaily.id = item.id;
-
-        dailyActivities.push(activityDaily);
-      }),
-      monthlyQuery.docs.map(async item => {
-        const activityMonthly = item.data();
-
-        activityMonthly.id = item.id;
-
-        monthlyActivities.push(activityMonthly);
-      }),
       yearlyQuery.docs.map(async item => {
         const activityYearly = item.data();
 
@@ -79,12 +147,16 @@ export const fetchEmployeeReports = ({ storeId, userId }) => async dispatch => {
       }),
     );
 
-    const dailyReport = orderBy(dailyActivities, 'price');
-    const monthlyReport = orderBy(monthlyActivities, 'price');
-    const yearlyReport = orderBy(yearlyActivities, 'price');
+    let yearlyReport = orderBy(yearlyActivities, 'price');
 
-    dispatch({ type: SET_DAILY_REPORT, data: dailyReport });
-    dispatch({ type: SET_MONTHLY_REPORT, data: monthlyReport });
+    yearlyReport =
+      Object.keys(yearlyReport).length > 0
+        ? Object.keys(yearlyReport).map(item => ({
+            name: item,
+            price: yearlyReport[item],
+          }))
+        : [];
+
     dispatch({ type: SET_YEARLY_REPORT, data: yearlyReport });
   } catch (e) {
     dispatch(fail(e.message));

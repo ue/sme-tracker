@@ -20,7 +20,6 @@ export default (state = initialState, { type, data, error }) => {
     case CUSTOMER_REQUEST:
       return {
         ...state,
-        data: [],
         error: null,
         status: STATUS_REQUEST,
       };

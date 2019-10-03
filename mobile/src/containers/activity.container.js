@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withNavigationFocus } from 'react-navigation';
 
 import { fetchEmployeeDailyActivities } from '../redux/actions/activities.action';
 
-const ActivityContainer = ({ children }) => {
+const ActivityContainer = ({ children, isFocused }) => {
   const dispatch = useDispatch();
 
   const storeId = useSelector(
@@ -14,9 +15,9 @@ const ActivityContainer = ({ children }) => {
 
   useEffect(() => {
     dispatch(fetchEmployeeDailyActivities({ storeId, userId }));
-  }, [dispatch, storeId, userId]);
+  }, [dispatch, storeId, userId, isFocused]);
 
   return children && children({ activities });
 };
 
-export default ActivityContainer;
+export default withNavigationFocus(ActivityContainer);

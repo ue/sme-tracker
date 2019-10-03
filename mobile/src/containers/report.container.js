@@ -1,9 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withNavigationFocus } from 'react-navigation';
 
-import { fetchEmployeeReports } from '../redux/actions/report.action';
+import {
+  fetchEmployeeDailyReports,
+  fetchEmployeeMonthlyReports,
+  fetchEmployeeYearlyReports,
+} from '../redux/actions/report.action';
 
-const ReportContainer = ({ children }) => {
+const ReportContainer = ({ children, isFocused }) => {
   const dispatch = useDispatch();
 
   const storeId = useSelector(
@@ -18,8 +23,10 @@ const ReportContainer = ({ children }) => {
   const yearlyReport = useSelector(state => state.reports.yearly || []);
 
   useEffect(() => {
-    dispatch(fetchEmployeeReports({ storeId, userId }));
-  }, [dispatch, storeId, userId]);
+    dispatch(fetchEmployeeDailyReports({ storeId, userId }));
+    dispatch(fetchEmployeeMonthlyReports({ storeId, userId }));
+    dispatch(fetchEmployeeYearlyReports({ storeId, userId }));
+  }, [dispatch, storeId, userId, isFocused]);
 
   return (
     children &&
@@ -27,4 +34,4 @@ const ReportContainer = ({ children }) => {
   );
 };
 
-export default ReportContainer;
+export default withNavigationFocus(ReportContainer);

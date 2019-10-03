@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withNavigationFocus } from 'react-navigation';
 
 import { fetchCustomers } from '../redux/actions/customers.action';
 
-const CustomerContainer = ({ children }) => {
+const CustomerContainer = ({ children, isFocused }) => {
   const dispatch = useDispatch();
 
   const storeId = useSelector(
@@ -13,9 +14,9 @@ const CustomerContainer = ({ children }) => {
 
   useEffect(() => {
     dispatch(fetchCustomers({ storeId }));
-  }, [dispatch, storeId]);
-  console.log('customers :', customers);
+  }, [dispatch, storeId, isFocused]);
+
   return children && children({ customers });
 };
 
-export default CustomerContainer;
+export default withNavigationFocus(CustomerContainer);

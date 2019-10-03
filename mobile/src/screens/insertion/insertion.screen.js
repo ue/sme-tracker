@@ -9,14 +9,14 @@ import IconButton from '../../components/iconButton/iconButton.view';
 import styles from './insertion.styles';
 
 const InsertionScreen = () => {
-  const [type, setType] = useState('Java');
+  const [type, setType] = useState(null);
   const [price, setPrice] = useState(0);
   const [customerName, setCustomerName] = useState('');
   const [customerNote, setCustomerNote] = useState('');
   const [customerId, setCustomerId] = useState(null);
 
-  const _closeButtonOnPress = () => {
-    setType('Java');
+  const _closeButtonOnPress = defaultType => {
+    setType(defaultType);
     setPrice(0);
     setCustomerName('');
     setCustomerNote('');
@@ -29,7 +29,7 @@ const InsertionScreen = () => {
         <View style={styles.container}>
           <View style={styles.topView}>
             <Picker
-              selectedValue={type}
+              selectedValue={type ? type : setType(activityTypes[0].key)}
               style={styles.picker}
               onValueChange={value => setType(value)}
             >
@@ -99,7 +99,7 @@ const InsertionScreen = () => {
                   customerName,
                   customerNote,
                   customerId,
-                  callback: _closeButtonOnPress,
+                  callback: () => _closeButtonOnPress(activityTypes[0].key),
                 })
               }
               size={55}

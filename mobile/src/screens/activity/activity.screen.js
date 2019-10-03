@@ -50,8 +50,6 @@ const _renderHeader = (dailyTotal, monthlyTotal) => (
   <View style={styles.informationView}>
     <Text style={styles.dailyPriceText}>{`${dailyTotal} ₺`}</Text>
     <Text>Gunluk</Text>
-    <Text style={styles.monthlyPriceText}>{`${monthlyTotal} ₺`}</Text>
-    <Text>Aylik</Text>
   </View>
 );
 
