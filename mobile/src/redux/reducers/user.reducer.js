@@ -9,7 +9,7 @@ import {
 } from '../../constants/actionTypes';
 
 const initialState = {
-  user: null,
+  data: null,
   status: STATUS_INIT,
   error: null,
 };
@@ -19,21 +19,21 @@ export default (state = initialState, { type, data, error }) => {
     case USER_REQUEST:
       return {
         ...state,
-        user: null,
+        data: null,
         error: null,
         status: STATUS_REQUEST,
       };
     case USER_REQUEST_FAIL:
       return {
         ...state,
-        user: null,
+        data: null,
         error: error,
         status: STATUS_FAIL,
       };
     case ADD_USER:
       return {
         ...state,
-        user: data,
+        data: data,
         error: null,
         status: STATUS_SUCCESS,
       };

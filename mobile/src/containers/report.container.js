@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withNavigationFocus } from 'react-navigation';
 
 import {
+  fetchDailyReports,
+  fetchMonthlyReports,
+  fetchYearlyReports,
   fetchEmployeeDailyReports,
   fetchEmployeeMonthlyReports,
   fetchEmployeeYearlyReports,
@@ -12,9 +15,12 @@ const ReportContainer = ({ children, isFocused }) => {
   const dispatch = useDispatch();
 
   const storeId = useSelector(
-    state => state.user.user && state.user.user.storeId,
+    state => state.user.data && state.user.data.storeId,
   );
-  const userId = useSelector(state => state.user.user && state.user.user.uid);
+  const userId = useSelector(state => state.user.data && state.user.data.uid);
+  const userRole = useSelector(
+    state => state.user.data && state.user.data.role,
+  );
   const activityTypes = useSelector(
     state => (state.store.data && state.store.data.productTypes) || [],
   );
@@ -23,14 +29,26 @@ const ReportContainer = ({ children, isFocused }) => {
   const yearlyReport = useSelector(state => state.reports.yearly || []);
 
   useEffect(() => {
-    dispatch(fetchEmployeeDailyReports({ storeId, userId }));
-    dispatch(fetchEmployeeMonthlyReports({ storeId, userId }));
-    dispatch(fetchEmployeeYearlyReports({ storeId, userId }));
-  }, [dispatch, storeId, userId, isFocused]);
+    if (userRole === 'admin') {
+      dispatch(fetchDailyReports({ storeId }));
+      dispatch(fetchMonthlyReports({ storeId }));
+      dispatch(fetchYearlyReports({ storeId }));
+    } else {
+      dispatch(fetchEmployeeDailyReports({ storeId, userId }));
+      dispatch(fetchEmployeeMonthlyReports({ storeId, userId }));
+      dispatch(fetchEmployeeYearlyReports({ storeId, userId }));
+    }
+  }, [dispatch, storeId, userId, isFocused, userRole]);
 
   return (
     children &&
-    children({ dailyReport, monthlyReport, yearlyReport, activityTypes })
+    children({
+      dailyReport,
+      monthlyReport,
+      yearlyReport,
+      activityTypes,
+      userRole,
+    })
   );
 };
 

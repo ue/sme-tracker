@@ -6,9 +6,9 @@ import { fetchCustomers, insertActivity } from '../services/firebaseService';
 const InsertionContainer = ({ children }) => {
   const [customers, setCustomers] = useState([]);
   const storeId = useSelector(
-    state => state.user.user && state.user.user.storeId,
+    state => state.user.data && state.user.data.storeId,
   );
-  const userId = useSelector(state => state.user.user && state.user.user.uid);
+  const userId = useSelector(state => state.user.data && state.user.data.uid);
   const activityTypes = useSelector(
     state => (state.store.data && state.store.data.productTypes) || [],
   );

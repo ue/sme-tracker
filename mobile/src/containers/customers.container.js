@@ -8,7 +8,7 @@ const CustomerContainer = ({ children, isFocused }) => {
   const dispatch = useDispatch();
 
   const storeId = useSelector(
-    state => state.user.user && state.user.user.storeId,
+    state => state.user.data && state.user.data.storeId,
   );
   const customers = useSelector(state => state.customers.data || []);
 

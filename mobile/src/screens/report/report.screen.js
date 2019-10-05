@@ -9,11 +9,15 @@ import ReportContainer from '../../containers/report.container';
 
 import styles from './report.styles';
 
-const _renderItem = ({ item, activityTypes }) => (
+const _renderItem = ({ item, activityTypes, userRole }) => (
   <View style={styles.listItemView}>
     <View style={styles.listItemLeft}>
       <Icon style={styles.icon} name="content-cut" size={35} />
-      <Text>{activityTypes.filter(i => i.key === item.name)[0].text}</Text>
+      {userRole === 'admin' ? (
+        <Text>{item.name}</Text>
+      ) : (
+        <Text>{activityTypes.filter(i => i.key === item.name)[0].text}</Text>
+      )}
     </View>
     <View>
       <Text>{item.price}</Text>
@@ -23,11 +27,11 @@ const _renderItem = ({ item, activityTypes }) => (
 
 const _keyExtractor = item => item.name;
 
-const _reportTab = (data, activityTypes) => (
+const _reportTab = (data, activityTypes, userRole) => (
   <FlatList
     data={data}
     keyExtractor={_keyExtractor}
-    renderItem={({ item }) => _renderItem({ item, activityTypes })}
+    renderItem={({ item }) => _renderItem({ item, activityTypes, userRole })}
   />
 );
 
@@ -41,7 +45,13 @@ const ActivityScreen = () => {
 
   return (
     <ReportContainer>
-      {({ dailyReport, monthlyReport, yearlyReport, activityTypes }) => {
+      {({
+        dailyReport,
+        monthlyReport,
+        yearlyReport,
+        activityTypes,
+        userRole,
+      }) => {
         return (
           <View style={styles.container}>
             <View style={styles.topView}>
@@ -66,9 +76,11 @@ const ActivityScreen = () => {
               <TabView
                 navigationState={{ index, routes }}
                 renderScene={SceneMap({
-                  daily: () => _reportTab(dailyReport, activityTypes),
-                  monthly: () => _reportTab(monthlyReport, activityTypes),
-                  yearly: () => _reportTab(yearlyReport, activityTypes),
+                  daily: () => _reportTab(dailyReport, activityTypes, userRole),
+                  monthly: () =>
+                    _reportTab(monthlyReport, activityTypes, userRole),
+                  yearly: () =>
+                    _reportTab(yearlyReport, activityTypes, userRole),
                 })}
                 onIndexChange={i => setIndex(i)}
                 initialLayout={{ width: Dimensions.get('window').width }}
