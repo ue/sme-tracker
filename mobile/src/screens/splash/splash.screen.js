@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 
+import Page from '../../components/page/page.view';
 import SplashContainer from '../../containers/splash.container';
 
 import styles from './splash.styles';
@@ -12,9 +13,9 @@ class SplashScreen extends Component {
     return (
       <SplashContainer>
         {() => (
-          <View style={styles.container}>
+          <Page style={styles.container}>
             <Text>SPLASH</Text>
-          </View>
+          </Page>
         )}
       </SplashContainer>
     );

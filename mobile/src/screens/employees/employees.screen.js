@@ -14,9 +14,9 @@ import Page from '../../components/page/page.view';
 
 import ROUTES from '../../constants/routeNames';
 
-import CustomersContainer from '../../containers/customers.container';
+import EmployeesContainer from '../../containers/employees.container';
 
-import styles from './customers.styles';
+import styles from './employees.styles';
 
 const _renderItem = ({ item }) => (
   <TouchableOpacity
@@ -34,10 +34,10 @@ const _renderItem = ({ item }) => (
 
 const _keyExtractor = item => item.id.toString();
 
-const CustomersScreen = ({ navigation }) => {
+const EmployeesScreen = ({ navigation }) => {
   return (
-    <CustomersContainer>
-      {({ customers }) => (
+    <EmployeesContainer>
+      {({ employees }) => (
         <Page style={styles.container}>
           <View style={styles.searchWrapper}>
             <TextInput
@@ -47,7 +47,7 @@ const CustomersScreen = ({ navigation }) => {
             />
           </View>
 
-          <TouchableOpacity style={styles.addCustomerWrapper}>
+          <TouchableOpacity style={styles.addEmployeesWrapper}>
             <IconButton
               onPress={() =>
                 navigation.navigate({
@@ -60,19 +60,19 @@ const CustomersScreen = ({ navigation }) => {
               color="#4A98F7"
               backgroundColor="white"
             />
-            <Text style={styles.buttonTitle}>Yeni müşteri ekle</Text>
+            <Text style={styles.buttonTitle}>Yeni calisan ekle</Text>
           </TouchableOpacity>
 
-          <Text style={styles.quickTitle}>Müşteriler</Text>
+          <Text style={styles.quickTitle}>Calisanlar</Text>
           <FlatList
-            data={customers}
+            data={employees}
             keyExtractor={_keyExtractor}
             renderItem={_renderItem}
           />
         </Page>
       )}
-    </CustomersContainer>
+    </EmployeesContainer>
   );
 };
 
-export default withNavigation(CustomersScreen);
+export default withNavigation(EmployeesScreen);

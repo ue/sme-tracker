@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 
 import LoginContainer from '../../containers/login.container';
 
 import Form from '../../components/form/form.view';
 import FormInput from '../../components/formInput/formInput.view';
 import Button from '../../components/button/button.view';
+import Page from '../../components/page/page.view';
 
 import LOGIN from '../../constants/validation';
 
@@ -79,7 +80,7 @@ class LoginScreen extends Component {
     return (
       <LoginContainer>
         {({ login }) => (
-          <View style={styles.container}>
+          <Page style={styles.container}>
             <Form onSubmitButtonPress={() => this._handleOnButtonPress()}>
               <Text>LOGIN</Text>
               <FormInput
@@ -111,7 +112,7 @@ class LoginScreen extends Component {
                 isLoading={isLoading}
               />
             </Form>
-          </View>
+          </Page>
         )}
       </LoginContainer>
     );

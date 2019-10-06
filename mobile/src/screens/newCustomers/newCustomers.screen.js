@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, View, Text, SafeAreaView } from 'react-native';
+import { TextInput, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import IconButton from '../../components/iconButton/iconButton.view';
@@ -8,6 +8,7 @@ import NewCustomerContainer from '../../containers/newCustomer.container';
 import ROUTES from '../../constants/routeNames';
 import styles from './newCustomers.styles';
 import navigationService from '../../services/navigationService';
+import Page from '../../components/page/page.view';
 
 const CustomersScreen = () => {
   const [customerName, setCustomerName] = useState('');
@@ -15,7 +16,7 @@ const CustomersScreen = () => {
   return (
     <NewCustomerContainer>
       {({ addCustomer }) => (
-        <SafeAreaView style={styles.container}>
+        <Page style={styles.container}>
           <Icon
             style={styles.icon}
             name="arrow-left"
@@ -45,7 +46,7 @@ const CustomersScreen = () => {
               iconName="plus"
             />
           </View>
-        </SafeAreaView>
+        </Page>
       )}
     </NewCustomerContainer>
   );

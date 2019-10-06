@@ -1,20 +1,11 @@
-import React, { Component, Fragment } from 'react';
-import {
-  View,
-  Image,
-  FlatList,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
-import navigationService from '../../services/navigationService';
-import ROUTES from '../../constants/routeNames';
+import React, { Component } from 'react';
+import { View, FlatList, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconButton from '../../components/iconButton/iconButton.view';
 import { withNavigation } from 'react-navigation';
 
-import ActivityContainer from '../../containers/activity.container';
+import navigationService from '../../services/navigationService';
+import ROUTES from '../../constants/routeNames';
+import Page from '../../components/page/page.view';
 
 import styles from './customerDetails.styles';
 
@@ -68,7 +59,7 @@ class CustomersScreen extends Component {
     const { navigationParams } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <Page style={styles.container}>
         <Icon
           style={styles.backIcon}
           name="arrow-left"
@@ -82,7 +73,7 @@ class CustomersScreen extends Component {
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
         />
-      </SafeAreaView>
+      </Page>
     );
   }
 }

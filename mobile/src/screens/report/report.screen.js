@@ -5,6 +5,7 @@ import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
+import Page from '../../components/page/page.view';
 import ReportContainer from '../../containers/report.container';
 
 import styles from './report.styles';
@@ -53,7 +54,7 @@ const ActivityScreen = () => {
         userRole,
       }) => {
         return (
-          <View style={styles.container}>
+          <Page style={styles.container}>
             <View style={styles.topView}>
               <View style={styles.informatinView}>
                 <Text style={styles.dailyPriceText}>
@@ -94,7 +95,7 @@ const ActivityScreen = () => {
                 )}
               />
             </View>
-          </View>
+          </Page>
         );
       }}
     </ReportContainer>

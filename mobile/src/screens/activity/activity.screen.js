@@ -10,6 +10,8 @@ import {
   Fade,
 } from 'rn-placeholder';
 
+import Page from '../../components/page/page.view';
+
 import ActivityContainer from '../../containers/activity.container';
 
 import styles from './activity.styles';
@@ -73,7 +75,7 @@ const ActivityScreen = () => {
         const data = activities.length > 0 ? activities : LIST_DATA;
         const dailyTotal = data.reduce((a, b) => a + parseInt(b.price, 10), 0);
         return (
-          <View style={styles.container}>
+          <Page style={styles.container}>
             <View style={styles.topView}>
               {activities.length > 0
                 ? _renderHeader(dailyTotal, 1000)
@@ -95,7 +97,7 @@ const ActivityScreen = () => {
                 }
               />
             </View>
-          </View>
+          </Page>
         );
       }}
     </ActivityContainer>

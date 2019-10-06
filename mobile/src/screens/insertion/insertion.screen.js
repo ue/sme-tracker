@@ -5,6 +5,7 @@ import Autocomplete from 'react-native-autocomplete-input';
 import InsertionContainer from '../../containers/insertion.container';
 
 import IconButton from '../../components/iconButton/iconButton.view';
+import Page from '../../components/page/page.view';
 
 import styles from './insertion.styles';
 
@@ -26,7 +27,7 @@ const InsertionScreen = () => {
   return (
     <InsertionContainer>
       {({ fetchCustomers, insertActivity, customers, activityTypes }) => (
-        <View style={styles.container}>
+        <Page style={styles.container}>
           <View style={styles.topView}>
             <Picker
               selectedValue={type ? type : setType(activityTypes[0].key)}
@@ -115,7 +116,7 @@ const InsertionScreen = () => {
               backgroundColor="white"
             />
           </View>
-        </View>
+        </Page>
       )}
     </InsertionContainer>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import styles from './iconButton.styles';
@@ -13,11 +13,13 @@ const IconButton = ({
   noButton,
   onPress,
   containerStyle,
+  text,
   ...props
 }) => {
   if (noButton) {
     return (
       <View style={[styles.container, { borderRadius }, { backgroundColor }]}>
+        {text && <Text style={styles.text}>{text}</Text>}
         <Icon name={iconName} color={color} size={size} {...props} />
       </View>
     );
@@ -25,8 +27,14 @@ const IconButton = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.container, containerStyle, { borderRadius }, { backgroundColor }]}
+      style={[
+        styles.container,
+        containerStyle,
+        { borderRadius },
+        { backgroundColor },
+      ]}
     >
+      {text && <Text style={styles.text}>{text}</Text>}
       <Icon name={iconName} color={color} size={size} {...props} />
     </TouchableOpacity>
   );

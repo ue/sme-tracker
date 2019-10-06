@@ -39,6 +39,7 @@ export default StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    marginTop: 10,
   },
   icon: {
     borderColor: 'gray',
@@ -51,7 +52,7 @@ export default StyleSheet.create({
     fontSize: 16,
     color: '#000',
   },
-  addCustomerWrapper: {
+  addEmployeesWrapper: {
     width: '100%',
     padding: 20,
     justifyContent: 'flex-start',

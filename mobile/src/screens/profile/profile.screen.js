@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Button } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import IconButton from '../../components/iconButton/iconButton.view';
+import Page from '../../components/page/page.view';
 import ProfileContainer from '../../containers/profile.container';
 import styles from './profile.styles';
 
@@ -10,8 +13,8 @@ class ProfileScreen extends Component {
   render() {
     return (
       <ProfileContainer>
-        {() => (
-          <View style={styles.container}>
+        {({ handleOnPreesEmployeesButton }) => (
+          <Page style={styles.container}>
             <View style={styles.avatarWrapper}>
               <Image
                 style={styles.avatar}
@@ -21,9 +24,24 @@ class ProfileScreen extends Component {
               <Text style={styles.indicatorText}>(Yonetici)</Text>
             </View>
             <View style={styles.bodyWrapper}>
-              <Button title="Cikis" />
+              <TouchableOpacity
+                style={styles.iconButton}
+                onPress={handleOnPreesEmployeesButton}
+              >
+                <Icon style={styles.icon} name="user-tie" size={45} />
+                <Text>Calisanlar</Text>
+              </TouchableOpacity>
             </View>
-          </View>
+            <View style={styles.bottomWrapper}>
+              <IconButton
+                onPress={console.log('test :')}
+                size={30}
+                borderRadius={20}
+                iconName="close"
+                text="Cikis"
+              />
+            </View>
+          </Page>
         )}
       </ProfileContainer>
     );

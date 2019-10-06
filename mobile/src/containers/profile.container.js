@@ -1,13 +1,15 @@
-import { Component } from 'react';
+import { withNavigation } from 'react-navigation';
 
-class ProfileContainer extends Component {
-  state = {};
+import ROUTES from '../constants/routeNames';
 
-  render() {
-    const { children } = this.props;
+const ProfileContainer = ({ children, navigation }) => {
+  const _handleOnPreesEmployeesButton = () => {
+    navigation.navigate(ROUTES.SCREENS.EMPLOYEES);
+  };
+  return (
+    children &&
+    children({ handleOnPreesEmployeesButton: _handleOnPreesEmployeesButton })
+  );
+};
 
-    return children && children();
-  }
-}
-
-export default ProfileContainer;
+export default withNavigation(ProfileContainer);

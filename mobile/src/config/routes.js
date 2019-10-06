@@ -15,6 +15,19 @@ import Profile from '../screens/profile/profile.screen';
 import Customer from '../screens/customers/customers.screen';
 import CustomerDetails from '../screens/customerDetails/customerDetails.screen';
 import NewCustomer from '../screens/newCustomers/newCustomers.screen';
+import Employees from '../screens/employees/employees.screen';
+
+const profileStack = createStackNavigator({
+  [ROUTES.SCREENS.PROFILE]: {
+    screen: Profile,
+    navigationOptions: {
+      header: () => null,
+    },
+  },
+  [ROUTES.SCREENS.EMPLOYEES]: {
+    screen: Employees,
+  },
+});
 
 const Home = createBottomTabNavigator(
   {
@@ -38,7 +51,12 @@ const Home = createBottomTabNavigator(
       screen: Insertion,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
-          <IconButton onPress={() => alert('as')} noButton size={25} iconName="plus" />
+          <IconButton
+            onPress={() => alert('as')}
+            noButton
+            size={25}
+            iconName="plus"
+          />
         ),
       }),
     },
@@ -51,7 +69,7 @@ const Home = createBottomTabNavigator(
       }),
     },
     [ROUTES.TABBAR.PROFILE]: {
-      screen: Profile,
+      screen: profileStack,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon name="account" color={tintColor} size={26} />

@@ -11,6 +11,8 @@ export default {
     SPLASH: `Splash${SCREEN_SUFFIX}`,
     NEW_CUSTOMER: `NewCustomer${SCREEN_SUFFIX}`,
     CUSTOMER_DETAILS: `CustomerDetails${SCREEN_SUFFIX}`,
+    EMPLOYEES: `Employees${SCREEN_SUFFIX}`,
+    PROFILE: `Profile${SCREEN_SUFFIX}`,
   },
   TABBAR: {
     DAILY: `Daily${TABBAR_SUFFIX}`,
