@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withNavigation } from 'react-navigation';
 import {
   View,
@@ -35,6 +35,8 @@ const _renderItem = ({ item }) => (
 const _keyExtractor = item => item.id.toString();
 
 const EmployeesScreen = ({ navigation }) => {
+  const [filter, setFilter] = useState('');
+
   return (
     <EmployeesContainer>
       {({ employees }) => (
@@ -42,18 +44,18 @@ const EmployeesScreen = ({ navigation }) => {
           <View style={styles.searchWrapper}>
             <TextInput
               placeholder="Ara..."
-              onChangeText={value => console.log('value :', value)}
+              onChangeText={value => setFilter(value)}
               style={styles.searchInput}
             />
           </View>
 
           <TouchableOpacity style={styles.addEmployeesWrapper}>
             <IconButton
-              onPress={() =>
-                navigation.navigate({
-                  routeName: ROUTES.SCREENS.NEW_EMPLOYEE,
-                })
-              }
+              // onPress={() =>
+              //   navigation.navigate({
+              //     routeName: ROUTES.SCREENS.NEW_EMPLOYEE,
+              //   })
+              // }
               size={32}
               borderRadius={20}
               iconName="plus"
@@ -65,7 +67,9 @@ const EmployeesScreen = ({ navigation }) => {
 
           <Text style={styles.quickTitle}>Calisanlar</Text>
           <FlatList
-            data={employees}
+            data={employees.filter(
+              item => item.name.indexOf(filter.toLowerCase()) > -1,
+            )}
             keyExtractor={_keyExtractor}
             renderItem={_renderItem}
           />

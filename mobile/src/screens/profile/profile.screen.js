@@ -13,7 +13,7 @@ class ProfileScreen extends Component {
   render() {
     return (
       <ProfileContainer>
-        {({ handleOnPreesEmployeesButton }) => (
+        {({ handleOnPreesEmployeesButton, userRole, logout }) => (
           <Page style={styles.container}>
             <View style={styles.avatarWrapper}>
               <Image
@@ -24,17 +24,19 @@ class ProfileScreen extends Component {
               <Text style={styles.indicatorText}>(Yonetici)</Text>
             </View>
             <View style={styles.bodyWrapper}>
-              <TouchableOpacity
-                style={styles.iconButton}
-                onPress={handleOnPreesEmployeesButton}
-              >
-                <Icon style={styles.icon} name="user-tie" size={45} />
-                <Text>Calisanlar</Text>
-              </TouchableOpacity>
+              {userRole === 'admin' && (
+                <TouchableOpacity
+                  style={styles.iconButton}
+                  onPress={handleOnPreesEmployeesButton}
+                >
+                  <Icon style={styles.icon} name="user-tie" size={45} />
+                  <Text>Calisanlar</Text>
+                </TouchableOpacity>
+              )}
             </View>
             <View style={styles.bottomWrapper}>
               <IconButton
-                onPress={console.log('test :')}
+                onPress={logout}
                 size={30}
                 borderRadius={20}
                 iconName="close"

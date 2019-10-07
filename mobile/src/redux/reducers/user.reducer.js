@@ -6,6 +6,7 @@ import {
   STATUS_FAIL,
   USER_REQUEST,
   USER_REQUEST_FAIL,
+  USER_LOGOUT,
 } from '../../constants/actionTypes';
 
 const initialState = {
@@ -34,6 +35,13 @@ export default (state = initialState, { type, data, error }) => {
       return {
         ...state,
         data: data,
+        error: null,
+        status: STATUS_SUCCESS,
+      };
+    case USER_LOGOUT:
+      return {
+        ...state,
+        data: null,
         error: null,
         status: STATUS_SUCCESS,
       };

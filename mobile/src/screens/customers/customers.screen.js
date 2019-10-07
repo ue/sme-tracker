@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withNavigation } from 'react-navigation';
 import {
   View,
@@ -35,6 +35,8 @@ const _renderItem = ({ item }) => (
 const _keyExtractor = item => item.id.toString();
 
 const CustomersScreen = ({ navigation }) => {
+  const [filter, setFilter] = useState('');
+
   return (
     <CustomersContainer>
       {({ customers }) => (
@@ -42,7 +44,7 @@ const CustomersScreen = ({ navigation }) => {
           <View style={styles.searchWrapper}>
             <TextInput
               placeholder="Ara..."
-              onChangeText={value => console.log('value :', value)}
+              onChangeText={value => setFilter(value)}
               style={styles.searchInput}
             />
           </View>
@@ -65,7 +67,9 @@ const CustomersScreen = ({ navigation }) => {
 
           <Text style={styles.quickTitle}>Müşteriler</Text>
           <FlatList
-            data={customers}
+            data={customers.filter(
+              item => item.name.indexOf(filter.toLowerCase()) > -1,
+            )}
             keyExtractor={_keyExtractor}
             renderItem={_renderItem}
           />
