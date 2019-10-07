@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, View, Picker, Text, TouchableOpacity } from 'react-native';
 import Autocomplete from 'react-native-autocomplete-input';
 
@@ -15,6 +15,7 @@ const InsertionScreen = () => {
   const [customerName, setCustomerName] = useState('');
   const [customerNote, setCustomerNote] = useState('');
   const [customerId, setCustomerId] = useState(null);
+  const [isValid, setIsValid] = useState(false);
 
   const _closeButtonOnPress = defaultType => {
     setType(defaultType);
@@ -23,6 +24,14 @@ const InsertionScreen = () => {
     setCustomerNote('');
     setCustomerId(null);
   };
+
+  useEffect(() => {
+    if (customerName && price && parseInt(price, 10) !== 0) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [customerName, price]);
 
   return (
     <InsertionContainer>
@@ -106,6 +115,7 @@ const InsertionScreen = () => {
               size={55}
               borderRadius={32}
               iconName="plus"
+              disabled={!isValid}
             />
             <IconButton
               onPress={_closeButtonOnPress}

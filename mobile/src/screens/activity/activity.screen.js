@@ -24,11 +24,12 @@ const LIST_DATA = [
   { name: 'Sac Kesimi', price: 20, icon: '', id: 5 },
 ];
 
-const _renderItem = ({ item }) => (
+const _renderItem = ({ item, userRole }) => (
   <View style={styles.listItemView}>
     <View style={styles.listItemLeft}>
       <Icon style={styles.icon} name="content-cut" size={35} />
       <View>
+        {userRole === 'admin' && <Text>{item.employee.name}</Text>}
         <Text>{item.type}</Text>
         <Text>{item.customer.name}</Text>
       </View>
@@ -71,7 +72,7 @@ const _keyExtractor = item => item.id.toString();
 const ActivityScreen = () => {
   return (
     <ActivityContainer>
-      {({ activities }) => {
+      {({ activities, userRole }) => {
         const data = activities.length > 0 ? activities : LIST_DATA;
         const dailyTotal = data.reduce((a, b) => a + parseInt(b.price, 10), 0);
         return (
@@ -93,7 +94,9 @@ const ActivityScreen = () => {
                 data={data}
                 keyExtractor={_keyExtractor}
                 renderItem={
-                  activities.length > 0 ? _renderItem : _renderListPlaceHolder
+                  activities.length > 0
+                    ? ({ item }) => _renderItem({ item, userRole })
+                    : _renderListPlaceHolder
                 }
               />
             </View>

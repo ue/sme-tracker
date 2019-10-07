@@ -27,7 +27,7 @@ const ActivityContainer = ({ children, isFocused }) => {
     }
   }, [dispatch, storeId, userId, isFocused, userRole]);
 
-  return children && children({ activities });
+  return children && children({ activities, userRole });
 };
 
 export default withNavigationFocus(ActivityContainer);

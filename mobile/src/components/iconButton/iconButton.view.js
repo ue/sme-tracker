@@ -14,6 +14,7 @@ const IconButton = ({
   onPress,
   containerStyle,
   text,
+  disabled,
   ...props
 }) => {
   if (noButton) {
@@ -33,6 +34,7 @@ const IconButton = ({
         { borderRadius },
         { backgroundColor },
       ]}
+      disabled={disabled}
     >
       {text && <Text style={styles.text}>{text}</Text>}
       <Icon name={iconName} color={color} size={size} {...props} />

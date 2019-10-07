@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Alert } from 'react-native';
 
 import { fetchCustomers, insertActivity } from '../services/firebaseService';
 
@@ -38,7 +39,8 @@ const InsertionContainer = ({ children }) => {
       storeId,
       userId,
     })
-      .then(result => {
+      .then(() => {
+        Alert.alert('Uyari', 'Eklendi');
         callback();
       })
       .catch(err => {});

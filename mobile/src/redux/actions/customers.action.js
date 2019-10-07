@@ -19,10 +19,24 @@ export const fetchCustomers = ({ storeId }) => async dispatch => {
 
     await Promise.all(
       await customerQuery.docs.map(async item => {
-        const customer = item.data();
+        const customer = await item.data();
+        const activityQuery = await firestore()
+          .collection('stores')
+          .doc(storeId)
+          .collection('activities')
+          .where('customer', '==', item.ref)
+          .get();
+        const activities = [];
+        await activityQuery.docs.map(async i => {
+          const activity = await i.data();
+          const employee = await activity.employee.get();
+          activity.employee = employee.data();
+          activity.id = i.id;
+          activities.push(activity);
+        });
 
         customer.id = item.id;
-
+        customer.activities = activities;
         customers.push(customer);
       }),
     );

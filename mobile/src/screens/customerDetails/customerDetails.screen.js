@@ -9,27 +9,11 @@ import Page from '../../components/page/page.view';
 
 import styles from './customerDetails.styles';
 
-const CUSTOMER_NOTES = [
-  {
-    employee: 'Kubra gun',
-    note:
-      'Sac boyandi boya renk: #333342 Sac boyandi boya renk: #333342. Manikur yapildi fon cekildi. Oje kodu #343434',
-    date: '21 Mart 2019',
-    id: 1,
-  },
-  {
-    employee: 'Gokhan',
-    note: 'Rofle yapildi',
-    date: '8 Ocak 2019',
-    id: 1,
-  },
-  {
-    employee: 'Ugur Erdal',
-    note: 'Manikur ve agda yapildi',
-    date: '15 Haziran 2019',
-    id: 1,
-  },
-];
+const options = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
 
 class CustomersScreen extends Component {
   state = {
@@ -43,11 +27,14 @@ class CustomersScreen extends Component {
         <View>
           <View style={styles.employeeWrapper}>
             <Text style={[styles.listItemText, styles.employeeName]}>
-              {item.employee}
+              {item.employee.name}
             </Text>
-            <Text style={styles.date}>({item.date})</Text>
+            <Text style={styles.date}>
+              ({item.createdAt.toDate().toLocaleDateString('tr-TR', options)})
+            </Text>
           </View>
-          <Text style={styles.listItemText}>{item.note}</Text>
+          <Text style={styles.listItemText}>{item.type}</Text>
+          <Text style={styles.listItemText}>{item.customerNote}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -69,7 +56,7 @@ class CustomersScreen extends Component {
 
         <Text style={styles.quickTitle}>{navigationParams.name} Hanim</Text>
         <FlatList
-          data={CUSTOMER_NOTES}
+          data={navigationParams.activities}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
         />

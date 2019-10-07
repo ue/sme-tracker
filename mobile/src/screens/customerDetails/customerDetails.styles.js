@@ -1,7 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').width;
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -23,7 +20,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
-  searchWrapper:{
+  searchWrapper: {
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -38,7 +35,6 @@ export default StyleSheet.create({
   listItemText: {
     fontSize: 16,
     color: '#000',
-    maxWidth: '90%',
   },
   quickTitle: {
     marginTop: 20,
@@ -54,7 +50,7 @@ export default StyleSheet.create({
   date: {
     fontSize: 12,
     padding: 3,
-    color: '#333'
+    color: '#333',
   },
   backIcon: {
     marginLeft: 10,
