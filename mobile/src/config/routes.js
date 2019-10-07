@@ -16,6 +16,7 @@ import Customer from '../screens/customers/customers.screen';
 import CustomerDetails from '../screens/customerDetails/customerDetails.screen';
 import NewCustomer from '../screens/newCustomers/newCustomers.screen';
 import Employees from '../screens/employees/employees.screen';
+import NewEmployee from '../screens/newEmployee/newEmployee.screen';
 
 const profileStack = createStackNavigator({
   [ROUTES.SCREENS.PROFILE]: {
@@ -26,6 +27,9 @@ const profileStack = createStackNavigator({
   },
   [ROUTES.SCREENS.EMPLOYEES]: {
     screen: Employees,
+  },
+  [ROUTES.SCREENS.NEW_EMPLOYEE]: {
+    screen: NewEmployee,
   },
 });
 

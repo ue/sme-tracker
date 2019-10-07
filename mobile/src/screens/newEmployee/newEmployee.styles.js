@@ -1,16 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  icon: {
-    marginLeft: 10,
-  },
-  quickTitle: {
-    fontSize: 14,
-    fontWeight: '500',
-    width: '100%',
-    marginLeft: 20,
-  },
-  customerInput: {
+  employeeInput: {
     marginTop: 20,
     marginLeft: 20,
     maxWidth: '40%',
@@ -22,11 +13,6 @@ export default StyleSheet.create({
     borderColor: '#cfcfcf',
     color: '#333',
     padding: 10,
-  },
-  notArea: {
-    paddingTop: 15,
-    minHeight: 100,
-    maxHeight: 170,
   },
   bottomView: {
     alignItems: 'center',

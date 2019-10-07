@@ -51,7 +51,7 @@ const EmployeesScreen = ({ navigation }) => {
             <IconButton
               onPress={() =>
                 navigation.navigate({
-                  routeName: ROUTES.SCREENS.NEW_CUSTOMER,
+                  routeName: ROUTES.SCREENS.NEW_EMPLOYEE,
                 })
               }
               size={32}
