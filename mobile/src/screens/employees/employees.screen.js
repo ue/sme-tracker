@@ -51,11 +51,11 @@ const EmployeesScreen = ({ navigation }) => {
 
           <TouchableOpacity style={styles.addEmployeesWrapper}>
             <IconButton
-              // onPress={() =>
-              //   navigation.navigate({
-              //     routeName: ROUTES.SCREENS.NEW_EMPLOYEE,
-              //   })
-              // }
+              onPress={() =>
+                navigation.navigate({
+                  routeName: ROUTES.SCREENS.NEW_EMPLOYEE,
+                })
+              }
               size={32}
               borderRadius={20}
               iconName="plus"

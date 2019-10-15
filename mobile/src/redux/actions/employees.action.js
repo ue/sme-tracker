@@ -1,4 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 import {
   EMPLOYEE_REQUEST,
   EMPLOYEE_FAIL,
@@ -32,20 +33,37 @@ export const fetchEmployees = ({ storeId }) => async dispatch => {
   }
 };
 
-export const addEmployee = ({ employeeName, storeId }) => async dispatch => {
+export const addEmployee = ({
+  employeeName,
+  username,
+  password,
+  storeId,
+}) => async dispatch => {
   dispatch({ type: EMPLOYEE_REQUEST });
 
   try {
-    const employee = await firestore()
+    const user = await auth().createUserWithEmailAndPassword(
+      `${username.toLowerCase()}@bubi.com`,
+      password,
+    );
+    await firestore()
       .collection('stores')
       .doc(storeId)
       .collection('employees')
-      .add({
+      .doc(user.user.uid)
+      .set({
         name: employeeName.toLowerCase(),
+      });
+    await firestore()
+      .collection('users')
+      .doc(user.user.uid)
+      .set({
+        role: 'employee',
+        storeId: storeId,
       });
     dispatch({
       type: ADD_EMPLOYEE,
-      data: { name: employeeName, id: employee.id },
+      data: { name: employeeName, id: user.user.uid },
     });
   } catch (e) {
     dispatch(fail(e.message));

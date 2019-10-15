@@ -13,11 +13,11 @@ import { fetchStoreData } from './store.action';
 
 export const addUserData = user => async dispatch => {
   dispatch({ type: USER_REQUEST });
-
   try {
+    console.log('user :', user);
     const documentSnapshot = await firestore()
       .collection('users')
-      .doc(user.uid)
+      .doc(user.user.uid)
       .get();
 
     const userData = documentSnapshot.data();
@@ -26,7 +26,7 @@ export const addUserData = user => async dispatch => {
 
     dispatch({
       type: ADD_USER,
-      data: { ...user.toJSON(), ...userData },
+      data: { ...user.user.toJSON(), ...userData },
     });
   } catch (e) {
     dispatch(failUserRequest(e.message));

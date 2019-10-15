@@ -10,8 +10,8 @@ const NewEmployeeContainer = ({ children, navigation }) => {
     state => state.user.data && state.user.data.storeId,
   );
 
-  const _addEmployee = ({ employeeName }) => {
-    dispatch(addEmployee({ employeeName, storeId }));
+  const _addEmployee = ({ employeeName, username, password }) => {
+    dispatch(addEmployee({ employeeName, username, password, storeId }));
     navigation.goBack();
   };
 

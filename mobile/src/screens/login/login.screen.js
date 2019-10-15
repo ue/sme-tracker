@@ -90,7 +90,7 @@ class LoginScreen extends Component {
                 onInputChange={this._handleOnUsernameEmailChange}
                 onInputBlur={() => this._handleOnInputBlur}
                 secureTextEntry={false}
-                validationRule={LOGIN.CASE.EMAIL}
+                validationRule={LOGIN.CASE.USER_NAME}
                 isValid={this._handleIsValid}
                 returnKeyType="next"
               />
