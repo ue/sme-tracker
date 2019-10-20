@@ -8,35 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* smeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* smeTests.m */; };
-		0E705404043345208EC8366E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33C89D4BAD094B39ABBD74C7 /* SimpleLineIcons.ttf */; };
-		119371552C0B44E7AA1B277A /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8436D2BAE8448F987574605 /* FontAwesome5_Brands.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		236ED35422F13ECD3D60E3F3 /* libPods-sme-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2082C905EF2158DA076824B2 /* libPods-sme-tvOS.a */; };
-		2B4435A44AA2422EADFFCEBF /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15FD08B8BAF04BE884E5E0FD /* MaterialCommunityIcons.ttf */; };
-		2C9BCDDF541442ED9CC15964 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 385684D98826431F977E7BBF /* FontAwesome5_Solid.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* smeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* smeTests.m */; };
-		2DD304CDDF5F4474B89B5E0F /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37C76A41657D44DDB39BC9E8 /* Entypo.ttf */; };
 		349313A3747BFC7AA26841A3 /* libPods-smeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7D91EE886D39827613C357 /* libPods-smeTests.a */; };
-		3B7D69DCB1C54AA29CED9FB7 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4138FDA31F3D4B0B957FBB1E /* EvilIcons.ttf */; };
-		3E132AE73FCD4A978F42249C /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D6795CFF0A2407FB55A83CD /* MaterialIcons.ttf */; };
 		4219C0016900FD19465BF792 /* libPods-sme.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6BCF76FED61AE7EC5F144E3 /* libPods-sme.a */; };
-		45A342E7CF3140C798845159 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1CDDB4421F44412BFAC8AF4 /* Feather.ttf */; };
-		4DCF5285DCD849A289E90621 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A382EF4B2041A8A11C80E3 /* Fontisto.ttf */; };
 		58D30F842335630500EB0283 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58D30F832335630500EB0283 /* GoogleService-Info.plist */; };
-		626E5AD74216479E92EB3390 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C106063F7A4E3AA1C6D33E /* Foundation.ttf */; };
 		6D98E75BDC4749B552CE8D57 /* libPods-sme-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8854383808E91C19A599CA /* libPods-sme-tvOSTests.a */; };
-		772F9B7DE9D24D0D9E4478FE /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C308AD89EF164CCF9EEF6366 /* FontAwesome5_Regular.ttf */; };
-		C3F539C7C9664D97B87445BA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92A36D0EC61441A7BC0E590A /* FontAwesome.ttf */; };
-		D4525D4A25E8476AB4A5BD5C /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80A3CE43EA664DEC928355E3 /* AntDesign.ttf */; };
-		E86F9DF8FB7F4495A9E4F310 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02E684C7C8C5481B87393438 /* Ionicons.ttf */; };
-		F7D83FC7974940D5983D67A7 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB86529A28094A858DED1DA6 /* Octicons.ttf */; };
-		FD8F32B805464940B0A03998 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5200D9A373194A11B7DDE5F3 /* Zocial.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,14 +366,20 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5DWCDXK8X2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 5DWCDXK8X2;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5DWCDXK8X2;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5DWCDXK8X2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
@@ -431,23 +421,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				D4525D4A25E8476AB4A5BD5C /* AntDesign.ttf in Resources */,
-				2DD304CDDF5F4474B89B5E0F /* Entypo.ttf in Resources */,
-				3B7D69DCB1C54AA29CED9FB7 /* EvilIcons.ttf in Resources */,
-				45A342E7CF3140C798845159 /* Feather.ttf in Resources */,
-				C3F539C7C9664D97B87445BA /* FontAwesome.ttf in Resources */,
-				119371552C0B44E7AA1B277A /* FontAwesome5_Brands.ttf in Resources */,
-				772F9B7DE9D24D0D9E4478FE /* FontAwesome5_Regular.ttf in Resources */,
-				2C9BCDDF541442ED9CC15964 /* FontAwesome5_Solid.ttf in Resources */,
-				4DCF5285DCD849A289E90621 /* Fontisto.ttf in Resources */,
 				58D30F842335630500EB0283 /* GoogleService-Info.plist in Resources */,
-				626E5AD74216479E92EB3390 /* Foundation.ttf in Resources */,
-				E86F9DF8FB7F4495A9E4F310 /* Ionicons.ttf in Resources */,
-				2B4435A44AA2422EADFFCEBF /* MaterialCommunityIcons.ttf in Resources */,
-				3E132AE73FCD4A978F42249C /* MaterialIcons.ttf in Resources */,
-				F7D83FC7974940D5983D67A7 /* Octicons.ttf in Resources */,
-				0E705404043345208EC8366E /* SimpleLineIcons.ttf in Resources */,
-				FD8F32B805464940B0A03998 /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +727,8 @@
 			baseConfigurationReference = 365FB1C80CA18FB0EFE4DD7A /* Pods-smeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -776,7 +752,9 @@
 			baseConfigurationReference = B161F0995D529F6D7392AAF1 /* Pods-smeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				INFOPLIST_FILE = smeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -798,6 +776,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				INFOPLIST_FILE = sme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -817,6 +796,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				INFOPLIST_FILE = sme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -841,6 +821,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "sme-tvOS/Info.plist";
@@ -870,6 +851,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "sme-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -896,6 +878,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "sme-tvOSTests/Info.plist";
@@ -924,6 +907,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5DWCDXK8X2;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "sme-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1049,7 +1033,7 @@
 				00E356F71AD99517003FC87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "sme" */ = {
 			isa = XCConfigurationList;
@@ -1058,7 +1042,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "sme-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1067,7 +1051,7 @@
 				2D02E4981E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "sme-tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1076,7 +1060,7 @@
 				2D02E49A1E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "sme" */ = {
 			isa = XCConfigurationList;
@@ -1085,7 +1069,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
