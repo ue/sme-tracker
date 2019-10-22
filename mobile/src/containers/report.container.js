@@ -48,6 +48,8 @@ const ReportContainer = ({ children, isFocused }) => {
       yearlyReport,
       activityTypes,
       userRole,
+      allReport: [dailyReport, monthlyReport, yearlyReport],
+      reportTypes: ['Günlük', 'Aylık', 'Yıllık']
     })
   );
 };

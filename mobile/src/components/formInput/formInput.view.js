@@ -113,6 +113,7 @@ class FormInputView extends Component {
           keyboardType={
             componentId === 'emailorusername' || componentId === 'email' ? 'email-address' : null
           }
+          autoCorrect={false}
         />
         {/* {secureTextEntry ? (
           <IconButton

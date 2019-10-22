@@ -27,7 +27,11 @@ const _renderItem = ({ item }) => (
   >
     <View style={styles.listItem}>
       <Icon style={styles.icon} name="account-circle-outline" size={35} />
-      <Text style={styles.listItemText}>{item.name}</Text>
+      <Text style={styles.listItemText}>{
+          item.name &&
+          item.name.charAt(0).toUpperCase() + item.name.substr(1).toLowerCase()
+        }
+      </Text>
     </View>
   </TouchableOpacity>
 );
@@ -46,6 +50,7 @@ const CustomersScreen = ({ navigation }) => {
               placeholder="Ara..."
               onChangeText={value => setFilter(value)}
               style={styles.searchInput}
+              autoCorrect={false}
             />
           </View>
 

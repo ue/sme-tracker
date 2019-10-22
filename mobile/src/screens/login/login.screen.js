@@ -16,21 +16,11 @@ class LoginScreen extends Component {
   state = {
     email: '',
     password: '',
-    isLoading: false,
     errorText: null,
     emailInput: null,
     passwordInput: null,
   };
 
-  // Component liftcycle function
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.errorMessage) {
-      this.setState({
-        isLoading: false,
-        errorText: nextProps.errorMessage,
-      });
-    }
-  }
 
   // Component functions
   _handleOnInputBlur = () => {
@@ -57,36 +47,33 @@ class LoginScreen extends Component {
     }
   };
 
-  _handleOnButtonPress = () => {
-    const { handleLogin } = this.props;
-    const { emailInput, passwordInput } = this.state;
+  _handleOnButtonPress = (login) => {
+    const {
+      email,
+      password,
+    } = this.state;
 
-    if (handleLogin && (emailInput && passwordInput)) {
-      this.setState({ isLoading: true, errorText: null }, () => {
-        handleLogin(this.state);
-      });
+    if (login && (email && password)) {
+        login({ email, password });
     }
   };
 
   render() {
     const {
-      isLoading,
-      errorText,
       emailInput,
       passwordInput,
-      email,
-      password,
     } = this.state;
+
     return (
       <LoginContainer>
-        {({ login }) => (
+        {({ login, error, isLoading }) => (
           <Page style={styles.container}>
             <Form onSubmitButtonPress={() => this._handleOnButtonPress()}>
-              <Text>LOGIN</Text>
+              <Text style={{ color: '#000', fontWeight: '500', fontSize: 20, letterSpacing: 1, }}>Giriş</Text>
               <FormInput
                 autoFocus
                 componentId="email"
-                labelText="E-mail"
+                labelText="Kullanıcı Adı"
                 onInputChange={this._handleOnUsernameEmailChange}
                 onInputBlur={() => this._handleOnInputBlur}
                 secureTextEntry={false}
@@ -97,18 +84,18 @@ class LoginScreen extends Component {
               <FormInput
                 returnKeyType="done"
                 componentId="password"
-                labelText="Password"
+                labelText="Şifre"
                 onInputChange={this._handleOnPasswordInputChange}
                 onInputBlur={() => this._handleOnInputBlur}
                 secureTextEntry
                 validationRule={LOGIN.CASE.PASSWORD}
                 isValid={this._handleIsValid}
               />
-              <Text style={styles.errorText}>{errorText}</Text>
+              <Text style={styles.errorText}>{error ? "Kullanici adi veya sifre yanlis." : ''}</Text>
               <Button
                 disabled={isLoading || !(emailInput && passwordInput)}
-                onPress={() => login({ email, password })}
-                text="Giris"
+                onPress={() =>  this._handleOnButtonPress(login)}
+                text="Giriş"
                 isLoading={isLoading}
               />
             </Form>

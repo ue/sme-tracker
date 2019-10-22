@@ -32,6 +32,7 @@ const InsertionScreen = () => {
       setIsValid(false);
     }
   }, [customerName, price]);
+  const numReg = /^\d+$/;
 
   return (
     <InsertionContainer>
@@ -52,10 +53,12 @@ const InsertionScreen = () => {
               ))}
             </Picker>
             <TextInput
-              value={price.toString()}
-              onChangeText={value => setPrice(value)}
+              value={price && price.toString()}
+              onChangeText={value => numReg.test(value) ? setPrice(value) : !value && setPrice(value)}
               style={styles.textInput}
-              keyboardType="number-pad"
+              keyboardType="numeric"
+              placeholder="0"
+              autoCorrect={false}
             />
           </View>
 
@@ -74,6 +77,7 @@ const InsertionScreen = () => {
                   }}
                   style={styles.customerInput}
                   placeholder="Musteri adi giriniz"
+                  autoCorrect={false}
                 />
               )}
               renderItem={({ item }) => (

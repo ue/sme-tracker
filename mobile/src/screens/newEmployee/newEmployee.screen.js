@@ -33,12 +33,14 @@ const NewEmployeeScreen = () => {
             onChangeText={value => setEmployeeName(value)}
             style={styles.employeeInput}
             placeholder="Ad soyad giriniz"
+            autoCorrect={false}
           />
           <TextInput
             value={username}
             onChangeText={value => _setUsername(value.toLowerCase())}
             style={styles.employeeInput}
             placeholder="Kullanici adi giriniz"
+            autoCorrect={false}
           />
           <TextInput
             value={password}
@@ -46,6 +48,7 @@ const NewEmployeeScreen = () => {
             style={styles.employeeInput}
             secureTextEntry
             placeholder="Kullanicinin sifresini giriniz"
+            autoCorrect={false}
           />
           <View style={styles.bottomView}>
             <IconButton

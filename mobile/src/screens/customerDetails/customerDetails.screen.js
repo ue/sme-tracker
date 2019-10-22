@@ -54,7 +54,7 @@ class CustomersScreen extends Component {
           onPress={() => navigationService.navigate(ROUTES.TABBAR.CUSTOMERS)}
         />
 
-        <Text style={styles.quickTitle}>{navigationParams.name} Hanim</Text>
+        <Text style={styles.quickTitle}>{navigationParams.name}</Text>
         <FlatList
           data={navigationParams.activities}
           keyExtractor={this._keyExtractor}

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withNavigationFocus } from 'react-navigation';
 
@@ -8,8 +8,11 @@ import {
 } from '../redux/actions/activities.action';
 
 const ActivityContainer = ({ children, isFocused }) => {
+  const activities = useSelector(state => state.activities.data || []);
+  const activitiesStatus = useSelector(state => state.activities.status || []);
   const dispatch = useDispatch();
-
+  const [isLoading, setIsLoading ] = useState(true);
+  const [isEmpty, setIsEmpty ] = useState(false);
   const storeId = useSelector(
     state => state.user.data && state.user.data.storeId,
   );
@@ -17,7 +20,6 @@ const ActivityContainer = ({ children, isFocused }) => {
   const userRole = useSelector(
     state => state.user.data && state.user.data.role,
   );
-  const activities = useSelector(state => state.activities.data || []);
 
   useEffect(() => {
     if (userRole === 'admin') {
@@ -25,9 +27,21 @@ const ActivityContainer = ({ children, isFocused }) => {
     } else {
       dispatch(fetchEmployeeDailyActivities({ storeId, userId }));
     }
-  }, [dispatch, storeId, userId, isFocused, userRole]);
+  }, [userRole]);
 
-  return children && children({ activities, userRole });
+  useEffect(() => {
+    if (activitiesStatus === 'success' && activities) {
+      setIsLoading(false);
+      setIsEmpty(activities.length === 0);
+    }
+  }, [activitiesStatus, activities]);
+
+  return children && children({
+    activities,
+    userRole,
+    isLoading,
+    isEmpty: isEmpty,
+  });
 };
 
 export default withNavigationFocus(ActivityContainer);

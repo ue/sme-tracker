@@ -46,6 +46,7 @@ const EmployeesScreen = ({ navigation }) => {
               placeholder="Ara..."
               onChangeText={value => setFilter(value)}
               style={styles.searchInput}
+              autoCorrect={false}
             />
           </View>
 

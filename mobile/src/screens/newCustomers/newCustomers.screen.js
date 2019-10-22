@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, View, Text } from 'react-native';
+import { TextInput, View, Text, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import IconButton from '../../components/iconButton/iconButton.view';
@@ -30,6 +30,7 @@ const CustomersScreen = () => {
             onChangeText={value => setCustomerName(value)}
             style={styles.customerInput}
             placeholder="Musteri adi giriniz"
+            autoCorrect={false}
           />
 
           <TextInput
@@ -37,10 +38,17 @@ const CustomersScreen = () => {
             style={[styles.customerInput, styles.notArea]}
             placeholder="Musteri notu"
             multiline
+            autoCorrect={false}
           />
           <View style={styles.bottomView}>
             <IconButton
-              onPress={() => addCustomer({ customerName })}
+              onPress={() => {
+                if (customerName) {
+                  addCustomer({ customerName });
+                  Alert.alert("Eklendi")
+                }
+              }}
+              disabled={!customerName}
               size={55}
               borderRadius={32}
               iconName="plus"

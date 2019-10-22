@@ -21,7 +21,7 @@ class ProfileScreen extends Component {
                 source={{ uri: 'https://via.placeholder.com/90x90.png' }}
               />
               <Text style={styles.name}>Ugur Erdal</Text>
-              <Text style={styles.indicatorText}>(Yonetici)</Text>
+              <Text style={styles.indicatorText}>{userRole === 'admin' ? "(Yonetici)" : "(Ekip Uyesi)"}</Text>
             </View>
             <View style={styles.bodyWrapper}>
               {userRole === 'admin' && (
@@ -51,3 +51,4 @@ class ProfileScreen extends Component {
 }
 
 export default ProfileScreen;
+// error

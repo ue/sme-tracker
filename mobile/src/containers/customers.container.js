@@ -10,7 +10,13 @@ const CustomerContainer = ({ children, isFocused }) => {
   const storeId = useSelector(
     state => state.user.data && state.user.data.storeId,
   );
-  const customers = useSelector(state => state.customers.data || []);
+  const customers = useSelector(state => state.customers.data && state.customers.data.sort(sorter) || []);
+
+  const sorter = (a, b) => {
+    if (a.name < b.name) { return -1; }
+    if (a.name > b.name) { return 1; }
+    return 0;
+  }
 
   useEffect(() => {
     dispatch(fetchCustomers({ storeId }));

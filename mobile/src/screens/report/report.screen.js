@@ -52,18 +52,20 @@ const ActivityScreen = () => {
         yearlyReport,
         activityTypes,
         userRole,
+        allReport,
+        reportTypes
       }) => {
         return (
           <Page style={styles.container}>
             <View style={styles.topView}>
               <View style={styles.informatinView}>
                 <Text style={styles.dailyPriceText}>
-                  {`${monthlyReport.reduce(
+                  {`${allReport[index].reduce(
                     (a, b) => a + parseInt(b.price, 10),
                     0,
                   )} ₺`}
                 </Text>
-                <Text>Aylik Toplam</Text>
+                <Text>{`${reportTypes[index]} Toplam`}</Text>
               </View>
               <AreaChart
                 style={styles.chart}

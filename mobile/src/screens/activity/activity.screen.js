@@ -17,11 +17,10 @@ import ActivityContainer from '../../containers/activity.container';
 import styles from './activity.styles';
 
 const LIST_DATA = [
-  { name: 'Sac Kesimi', price: 20, icon: '', id: 1 },
+  { name: 'Sac Kesimi', price: 5, icon: '', id: 1 },
   { name: 'Sac Kesimi', price: 10, icon: '', id: 2 },
-  { name: 'Sac Kesimi', price: 30, icon: '', id: 3 },
+  { name: 'Sac Kesimi', price: 5, icon: '', id: 3 },
   { name: 'Sac Kesimi', price: 10, icon: '', id: 4 },
-  { name: 'Sac Kesimi', price: 20, icon: '', id: 5 },
 ];
 
 const _renderItem = ({ item, userRole }) => (
@@ -29,9 +28,9 @@ const _renderItem = ({ item, userRole }) => (
     <View style={styles.listItemLeft}>
       <Icon style={styles.icon} name="content-cut" size={35} />
       <View>
-        {userRole === 'admin' && <Text>{item.employee.name}</Text>}
+        {userRole === 'admin' && <Text>{item.employee && item.employee.name}</Text>}
         <Text>{item.type}</Text>
-        <Text>{item.customer.name}</Text>
+        <Text>{item.customer && item.customer.name}</Text>
       </View>
     </View>
     <View>
@@ -60,9 +59,7 @@ const _renderHeaderPlaceHolder = () => (
   <View style={styles.informationView}>
     <Placeholder Animation={Fade}>
       <PlaceholderLine width={30} style={styles.center} />
-      <Text style={styles.center}>Gunluk</Text>
       <PlaceholderLine width={30} style={styles.center} />
-      <Text style={styles.center}>Aylik</Text>
     </Placeholder>
   </View>
 );
@@ -72,13 +69,20 @@ const _keyExtractor = item => item.id.toString();
 const ActivityScreen = () => {
   return (
     <ActivityContainer>
-      {({ activities, userRole }) => {
+      {({ activities, userRole, isLoading, isEmpty }) => {
         const data = activities.length > 0 ? activities : LIST_DATA;
         const dailyTotal = data.reduce((a, b) => a + parseInt(b.price, 10), 0);
+
+        if (!isLoading && isEmpty) return (
+          <Page style={styles.container}>
+            <Text style={{fontSize: 24, fontWeight: '600', color: '#cbcbcb'}}>Bu gün için hiç girdiniz yok.</Text>
+          </Page>
+        )
+
         return (
           <Page style={styles.container}>
             <View style={styles.topView}>
-              {activities.length > 0
+              {!isLoading
                 ? _renderHeader(dailyTotal, 1000)
                 : _renderHeaderPlaceHolder()}
               <AreaChart
@@ -94,8 +98,8 @@ const ActivityScreen = () => {
                 data={data}
                 keyExtractor={_keyExtractor}
                 renderItem={
-                  activities.length > 0
-                    ? ({ item }) => _renderItem({ item, userRole })
+                  !isLoading
+                    ? ({ item }) => item && _renderItem({ item, userRole })
                     : _renderListPlaceHolder
                 }
               />
